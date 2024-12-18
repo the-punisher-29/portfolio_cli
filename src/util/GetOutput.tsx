@@ -35,7 +35,7 @@ export function GetOutput(
             </h1>
             <div>
       <p className="mt-2">
-        Oh, hey - meet me, an IIT Jodhpur third-year undergrad who's juggling{" "}
+        Oh, hey - meet me, a third-year undergrad at IIT Jodhpur who's juggling{" "}
         <span className="text-[#f6c177]">Computer Science</span> and{" "}
         <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
         (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
@@ -43,7 +43,7 @@ export function GetOutput(
       </p>
       
       <p className="mt-2">
-        When I'm not diving deep into algorithms that would make most people's heads spin, 
+        When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
         I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
         And just to keep things interesting, I've got this whole{" "}
         <span className="text-[#f6c177]">competitive coding</span> thing going on, 
