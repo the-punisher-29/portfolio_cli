@@ -77,7 +77,7 @@ export function GetOutput(
         <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
           <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
             <img
-              src="dist\assets\20240628_191351.jpg"
+              src="public\20240628_191351.jpg"
               alt="Soumen Kumar"
               className="w-full h-full object-cover object-center"
               loading="eager"
