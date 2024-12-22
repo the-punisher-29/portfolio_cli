@@ -21,55 +21,68 @@ export function GetOutput(
       const url = "/resume.pdf";
       const link = document.createElement("a");
       link.href = url;
-      link.download = "Soumen_Resume.pdf";
+      link.download = "Soumen's_Resume.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       return "";
     case "about":
       return (
-        <div className="">
-          <div>
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="lg:w-2/3">
             <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-2">
               About Soumen Kumar
             </h1>
             <div>
-      <p className="mt-2">
-        Oh, hey - meet me, a third-year undergrad at IIT Jodhpur who's juggling{" "}
-        <span className="text-[#f6c177]">Computer Science</span> and{" "}
-        <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
-        (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
-        I'm out here saying "Why not both?" and actually making it work.
-      </p>
-      
-      <p className="mt-2">
-        When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
-        I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
-        And just to keep things interesting, I've got this whole{" "}
-        <span className="text-[#f6c177]">competitive coding</span> thing going on, 
-        because apparently regular programming wasn't challenging enough.
-      </p>
-      
-      <p className="mt-2">
-        But don't let all this tech talk fool you. Off the keyboard, I'm busy destroying 
-        opponents in badminton or strategizing in esports, proving that you can indeed be 
-        a tech wizard and have a life (shocking, I know). The best part? I'm actually using 
-        these gaming skills to level up my teamwork and strategic thinking - pretty clever, right?
-      </p>
-      
-      <p className="mt-2">
-        Fair warning though: if you get me started on{" "}
-        <span className="text-[#f6c177]">machine learning</span> or{" "}
-        <span className="text-[#f6c177]">embedded systems</span>, you might want to grab 
-        a coffee first. I've got this infectious enthusiasm for building stuff that actually 
-        matters, and I'm always on the lookout for other tech enthusiasts who share my 
-        "let's make something awesome" mindset.
-      </p>
-      
-      <p className="text-xs mt-2 italic">
-        - ChatGPT (because I'm too busy coding to write my own bio, obviously)
-      </p>
-    </div>
+              <p className="mt-2">
+                Oh, hey - meet me, a third-year undergrad at IIT Jodhpur who's juggling{" "}
+                <span className="text-[#f6c177]">Computer Science</span> and{" "}
+                <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
+                (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
+                I'm out here saying "Why not both?" and actually making it work.
+              </p>
+              
+              <p className="mt-2">
+                When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
+                I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
+                And just to keep things interesting, I've got this whole{" "}
+                <span className="text-[#f6c177]">competitive coding</span> thing going on, 
+                because apparently regular programming wasn't challenging enough.
+              </p>
+              
+              <p className="mt-2">
+                But don't let all this tech talk fool you. Off the keyboard, I'm busy destroying 
+                opponents in badminton or strategizing in esports, proving that you can indeed be 
+                a tech wizard and have a life (shocking, I know). The best part? I'm actually using 
+                these gaming skills to level up my teamwork and strategic thinking - pretty clever, right?
+              </p>
+              
+              <p className="mt-2">
+                Fair warning though: if you get me started on{" "}
+                <span className="text-[#f6c177]">machine learning</span> or{" "}
+                <span className="text-[#f6c177]">embedded systems</span>, you might want to grab 
+                a coffee first. I've got this infectious enthusiasm for building stuff that actually 
+                matters, and I'm always on the lookout for other tech enthusiasts who share my 
+                "let's make something awesome" mindset.
+              </p>
+              
+              <p className="text-xs mt-2 italic">
+                - ChatGPT (because I'm too busy coding to write my own bio, obviously)
+              </p>
+            </div>
+          </div>
+          
+          {/* Profile Picture Container */}
+        {/* Square Profile Picture Container */}
+        <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
+          <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
+            <img
+              src="dist\assets\20240628_191351.jpg"
+              alt="Soumen Kumar"
+              className="w-full h-full object-cover object-center"
+              loading="eager"
+            />
+          </div>
           </div>
         </div>
       );
@@ -86,13 +99,13 @@ export function GetOutput(
               <span className="text-[#f6c177]">open source</span> contributions
             </li>
             <li className="m-2 text-[#31748f]">
-              Explore and Excel{" "}
+              Explore and Excel in{" "}
               <span className="text-[#f6c177]">system design</span> and{" "}
               <span className="text-[#f6c177]">cloud technologies</span>
             </li>
             <li className="m-2 text-[#31748f]">
               learning{" "}
-              <span className="text-[#f6c177]">terminal applications</span>{" "}
+              <span className="text-[#f6c177]">terminal and desktop applications</span>{" "}
               development with DotNet and C++
             </li>
           </ul>
@@ -112,32 +125,48 @@ export function GetOutput(
               <p className="mt-2 text-[#c4a7e7]">
                 As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on experience across several technical domains, which have allowed me to bridge the gap between my academic learning and real-world problem-solving.
               </p>
-              <ul className="list-disc list-inside mt-4">
-                <li className="m-2 text-[#31748f]">
-                  <strong className="text-[#f6c177]">Quantum Developer Intern at CybraneX</strong> (Present) - Conducting 
-                  research on quantum hardware and algorithms using IBM Quantum Platform Qiskit, exploring cutting-edge quantum computing applications.
-                </li>
-      
-                <li className="m-2 text-[#31748f]">
-                  <strong className="text-[#f6c177]">UG Research Scholar, Electrical Department, IIT Jodhpur</strong> (August 2023 – March 2024)
-                  <ul className="list-none ml-4 mt-1">
-                    <li className="mb-1">• Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) 
-                      and Meta's Quest, enabling real-time communication through skin for over 50 
-                      differently-abled individuals.
+              <div className="mt-4">
+                {/* Quantum Developer Intern */}
+                <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
+                  <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+                    Quantum Developer Intern at CybraneX
+                  </h2>
+                  <p className="text-[#31748f]">
+                    (December 2024 - Present) 
+                  </p>
+                  <ul className="list-disc list-inside mt-2">
+                    <li className="mb-2">
+                      Developing Quantum Algorithms for optimization problems using Qiskit and IBM Quantum Experience.
                     </li>
-                    <li className="mb-1">• Designed a 2x2 vibrotactile display with LRA actuators capable of representing 
-                      all 36 alphabetic and numeric characters, increasing tactile communication 
-                      efficiency by 30%.
-                    </li>
-                    <li className="mb-1">• Simulated the tactile feedback system using MATLAB, Arduino IDE, Unity, and 
-                      Simulink, reducing system response time by 20%.
+                    <li className="mb-2">
+                      Working on Quantum Machine Learning using NVIDIA's CUDA-Q.
                     </li>
                   </ul>
-                </li>
-              </ul>
+                </div>
+        
+                {/* UG Research Scholar */}
+                <div className="border-2 border-[#31748f] rounded-lg p-4">
+                  <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+                    UG Research Scholar, Electrical Department, IIT Jodhpur
+                  </h2>
+                  <p className="text-[#31748f]">(August 2023 – March 2024)</p>
+                  <ul className="list-disc list-inside mt-2">
+                    <li className="mb-2">
+                      Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) and Meta's Quest, enabling real-time communication through skin for over 50 differently-abled individuals.
+                    </li>
+                    <li className="mb-2">
+                      Designed a 2x2 vibrotactile display with LRA actuators capable of representing all 36 alphabetic and numeric characters, increasing tactile communication efficiency by 30%.
+                    </li>
+                    <li>
+                      Simulated the tactile feedback system using MATLAB, Arduino IDE, Unity, and Simulink, reducing system response time by 20%.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         );
+        
       
        
         case "projects":
