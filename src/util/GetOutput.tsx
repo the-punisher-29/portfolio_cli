@@ -77,7 +77,7 @@ export function GetOutput(
         <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
           <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
             <img
-              src="public\20240628_191351.jpg"
+              src="https://github.com/the-punisher-29/portfolio_cli/blob/037cf9424bf2261c9e302748bdc8831e30950a16/public/20240628_191351.jpg"
               alt="Soumen Kumar"
               className="w-full h-full object-cover object-center"
               loading="eager"
