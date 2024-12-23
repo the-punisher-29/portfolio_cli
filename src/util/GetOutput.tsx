@@ -15,7 +15,7 @@ export function GetOutput(
       setCommandList([]);
       return "";
     case "blogs":
-      window.open("https://fallacious-air-9fe.notion.site/Soumen-Kumar-c635cb53c20645a681b00250a972ece1", "_blank");
+      window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
     case "resume":
       const url = "/resume.pdf";
@@ -77,7 +77,7 @@ export function GetOutput(
         <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
           <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
             <img
-              src="https://github.com/the-punisher-29/portfolio_cli/blob/037cf9424bf2261c9e302748bdc8831e30950a16/public/20240628_191351.jpg"
+              src="/20240628_153106.jpg"
               alt="Soumen Kumar"
               className="w-full h-full object-cover object-center"
               loading="eager"
