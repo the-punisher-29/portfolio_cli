@@ -41,28 +41,31 @@ export default function handleKeyDown(
     }
   } else if (e.key === "Tab") {
     e.preventDefault();
-    if (currentCommand.toLowerCase().startsWith("a")) {
-      setCurrentCommand("about");
+    if (currentCommand.toLowerCase().startsWith("a") && !currentCommand.toLowerCase().startsWith("ach")) {
+        setCurrentCommand("about");
+    } else if (currentCommand.toLowerCase().startsWith("ach")) {
+        setCurrentCommand("achievements");
     } else if (currentCommand.toLowerCase().startsWith("e")) {  // Experience comes before projects
-      setCurrentCommand("experiences");
+        setCurrentCommand("experiences");
     } else if (currentCommand.toLowerCase().startsWith("p")) {
-      setCurrentCommand("projects");
+        setCurrentCommand("projects");
     } else if (currentCommand.toLowerCase().startsWith("c")) {
-      setCurrentCommand("clear");
+        setCurrentCommand("clear");
     } else if (currentCommand.toLowerCase().startsWith("b")) {
-      setCurrentCommand("blogs");
+        setCurrentCommand("blogs");
     } else if (currentCommand.toLowerCase().startsWith("sk")) {
-      setCurrentCommand("skills");
+        setCurrentCommand("skills");
     } else if (currentCommand.toLowerCase().startsWith("so")) {
-      setCurrentCommand("socials");
+        setCurrentCommand("socials");
     } else if (currentCommand.toLowerCase().startsWith("r")) {
-      setCurrentCommand("resume");
+        setCurrentCommand("resume");
     } else if (currentCommand.toLowerCase().startsWith("g")) {
-      setCurrentCommand("goals");
+        setCurrentCommand("goals");
     } else if (currentCommand.toLowerCase().startsWith("su")) {
-      setCurrentCommand("sudo rm -rf /*");
+        setCurrentCommand("sudo rm -rf /*");
     } else if (currentCommand.toLowerCase().startsWith("h")) {
-      setCurrentCommand("help");
+        setCurrentCommand("help");
     }
-  }
+}
+
 }

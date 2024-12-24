@@ -244,7 +244,6 @@ export function GetOutput(
               techTags: ["Android Studio", "Google Cloud", "XML", "Firebase"],
             },
           ];
-
       return (
         <div className="">
           {projects.map((item, index) => {
@@ -406,6 +405,82 @@ export function GetOutput(
           })}
         </div>
       );
+
+      case "achievements":
+        return (
+          <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
+          {/* Common Heading */}
+          <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-6">
+            CP Profiles
+          </h2>
+      
+          {/* Content Boxes */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Codeforces Box */}
+            <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <img
+                  src="dist\2944796.webp"
+                  alt="Codeforces Logo"
+                  className="h-12 w-12 mr-4"
+                />
+                <h2 className="text-[#f6c177] text-xl font-bold">Codeforces</h2>
+              </div>
+              <p className="text-[#e0def4] mb-2">
+                <strong>Rating:</strong> Expert (1603)
+              </p>
+              <a
+                href="https://codeforces.com/profile/soumen_kr003"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#f6c177] hover:text-[#9ccfd8]"
+              >
+                View Profile
+              </a>
+            </div>
+      
+            {/* CodeChef Box */}
+            <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <img
+                  src="dist\6179134-middle.png"
+                  alt="CodeChef Logo"
+                  className="h-12 w-12 mr-4"
+                />
+                <h2 className="text-[#f6c177] text-xl font-bold">CodeChef</h2>
+              </div>
+              <p className="text-[#e0def4] mb-2">
+                <strong>Rating:</strong> 1814 (4★)
+              </p>
+              <a
+                href="https://www.codechef.com/users/soumen_1929"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#f6c177] hover:text-[#9ccfd8]"
+              >
+                View Profile
+              </a>
+            </div>
+          </div>
+      
+        
+            {/* Remaining Achievements */}
+            <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
+              <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-4">
+                Other Achievements
+              </h2>
+              <ul className="list-disc pl-5 text-[#e0def4]">
+                <li>Department Rank 3 in B.Tech CS+EE</li>
+                <li>
+                  3rd Prize (Project Demonstration) in Industry Day-2024 @ IITJ
+                </li>
+                <li>Part of IITJ Team in ISRO-URC 24</li>
+              </ul>
+            </div>
+          </div>
+        );
+        
+
       case "help":
         return (
           <>
@@ -413,6 +488,10 @@ export function GetOutput(
               <p className="text-[#c4a7e7] col-span-2">All available commands:</p>
               {[
                 { comm: "about", desc: "- Learn more about me" },
+                {
+                  comm: "achievements",
+                  desc: "- My achievements and awards",
+                },
                 {
                   comm: "experiences",
                   desc: "- Learn about my experiences",
