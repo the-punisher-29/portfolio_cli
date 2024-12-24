@@ -190,7 +190,7 @@ export function GetOutput(
               shortDesc: "A cutting-edge solution for diagnosing cancer and recommending treatments, focusing on Non-Small Cell Lung Cancer (NSCLC) with future plans to expand.(Under Collaboration of IIT Jodhpur and AIIMS Jodhpur)",
               gbLink: "https://github.com/the-punisher-29/Cancer_Diagnostics_App",
               liveLink: "",
-              techTags: ["RKotlin", "XML", "Firebase", "AI", "Healthcare"],
+              techTags: ["Kotlin", "XML", "Firebase", "AI", "Healthcare"],
             },
             {
               projName: "Movie Recommender System",
@@ -420,7 +420,7 @@ export function GetOutput(
             <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <img
-                  src="dist\2944796.webp"
+                  src="/2944796.webp"
                   alt="Codeforces Logo"
                   className="h-12 w-12 mr-4"
                 />
@@ -443,7 +443,7 @@ export function GetOutput(
             <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
               <div className="flex items-center mb-4">
                 <img
-                  src="dist\6179134-middle.png"
+                  src="/6179134-middle.png"
                   alt="CodeChef Logo"
                   className="h-12 w-12 mr-4"
                 />
