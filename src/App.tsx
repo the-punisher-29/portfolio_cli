@@ -1,11 +1,14 @@
 import Terminal from "./components/Terminal";
-
+import { SpeedInsights } from '@vercel/speed-insights/react';
 export default function App() {
-  return <>
-  <Terminal />
-  <div className="text-white text-center pb-2  ">
-     @soumen-2024
-  </div>
-  </>
-
+  return (
+    <div>
+      <Terminal />
+       {/* ... */}
+       <SpeedInsights />
+      <div className="text-white text-center pb-2">
+        @soumen-2024
+      </div>
+    </div>
+  );
 }
