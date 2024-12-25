@@ -18,7 +18,7 @@ export function GetOutput(
       window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
     case "resume":
-      const url = "/resume.pdf";
+      const url = "/GP_Res_SDE_Role_MIX_.pdf";
       const link = document.createElement("a");
       link.href = url;
       link.download = "Soumen's_Resume.pdf";
