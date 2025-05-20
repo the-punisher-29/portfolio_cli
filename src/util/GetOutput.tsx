@@ -18,7 +18,7 @@ export function GetOutput(
       window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
     case "resume":
-      const url = "/GP_Res_SDE_Role_MIX_.pdf";
+      const url = "/GP_Resume_Soumen.pdf";
       const link = document.createElement("a");
       link.href = url;
       link.download = "Soumen's_Resume.pdf";
@@ -35,7 +35,7 @@ export function GetOutput(
             </h1>
             <div>
               <p className="mt-2">
-                Oh, hey - meet me, a third-year undergrad at IIT Jodhpur who's juggling{" "}
+                Oh, hey - meet me, a final-year undergrad at IIT Jodhpur who's juggling{" "}
                 <span className="text-[#f6c177]">Computer Science</span> and{" "}
                 <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
                 (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
@@ -111,61 +111,78 @@ export function GetOutput(
           </ul>
           <p className=" ">
             Last updated on{" "}
-            <span className="text-[#f6c177]">18-12-2024</span>
+            <span className="text-[#f6c177]">18-05-2025</span>
           </p>
         </div>
       );
-      case "experiences":
-        return (
-          <div className="">
-            <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-4">
-              Experiences
-            </h1>
-            <div>
-              <p className="mt-2 text-[#c4a7e7]">
-                As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on experience across several technical domains, which have allowed me to bridge the gap between my academic learning and real-world problem-solving.
-              </p>
-              <div className="mt-4">
-                {/* Quantum Developer Intern */}
-                <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
-                  <h2 className="text-[#f6c177] font-bold text-lg mb-2">
-                    Quantum Developer Intern at CybraneX
-                  </h2>
-                  <p className="text-[#31748f]">
-                    (December 2024 - Present) 
-                  </p>
-                  <ul className="list-disc list-inside mt-2">
-                    <li className="mb-2">
-                      Developing Quantum Algorithms for optimization problems using Qiskit and IBM Quantum Experience.
-                    </li>
-                    <li className="mb-2">
-                      Working on Quantum Machine Learning using NVIDIA's CUDA-Q.
-                    </li>
-                  </ul>
-                </div>
-        
-                {/* UG Research Scholar */}
-                <div className="border-2 border-[#31748f] rounded-lg p-4">
-                  <h2 className="text-[#f6c177] font-bold text-lg mb-2">
-                    UG Research Scholar, Electrical Department, IIT Jodhpur
-                  </h2>
-                  <p className="text-[#31748f]">(August 2023 – March 2024)</p>
-                  <ul className="list-disc list-inside mt-2">
-                    <li className="mb-2">
-                      Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) and Meta's Quest, enabling real-time communication through skin for over 50 differently-abled individuals.
-                    </li>
-                    <li className="mb-2">
-                      Designed a 2x2 vibrotactile display with LRA actuators capable of representing all 36 alphabetic and numeric characters, increasing tactile communication efficiency by 30%.
-                    </li>
-                    <li>
-                      Simulated the tactile feedback system using MATLAB, Arduino IDE, Unity, and Simulink, reducing system response time by 20%.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+case "experiences":
+  return (
+    <div className="">
+      <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-4">
+        Experiences
+      </h1>
+      <div>
+        <p className="mt-2 text-[#c4a7e7]">
+          As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on experience across several technical domains, which have allowed me to bridge the gap between my academic learning and real-world problem-solving.
+        </p>
+        <div className="mt-4">
+
+          {/* InfoEdge Internship */}
+          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
+            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+              Data Science Intern at InfoEdge (naukri.com)
+            </h2>
+            <p className="text-[#31748f]">(Present)</p>
+            <ul className="list-disc list-inside mt-2">
+              <li className="mb-2">
+                Working with the <strong>Content Recommendation Team</strong> for the <strong>Minis</strong> subsection on both web and mobile apps, revamping the recommendation pipeline using <strong>Bayesian statistics</strong> and <strong>ranking algorithms</strong> to improve personalized content delivery.
+              </li>
+              <li>
+                Building an <strong>analytics dashboard</strong> that fetches <strong>user interaction data</strong> from <strong>DataLake</strong> and <strong>Kafka</strong> to enable live comparative insights between the old Minis feed and the <strong>Unified feed</strong> currently in beta testing.
+              </li>
+            </ul>
           </div>
-        );
+
+          {/* CybraneX Internship */}
+          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
+            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+              Quantum Developer Intern at CybraneX
+            </h2>
+            <p className="text-[#31748f]">(December 2024 – May 2025)</p>
+            <ul className="list-disc list-inside mt-2">
+              <li className="mb-2">
+                Researched <strong>Quantum Hardware Systems</strong> using <strong>Qiskit</strong> and <strong>IBM Quantum</strong>, designing and simulating quantum circuits for hardware optimization and real-world algorithm development.
+              </li>
+              <li>
+                Implemented <strong>Quantum Machine Learning (QML)</strong> algorithms using <strong>CUDA-Q</strong> to accelerate simulations and solve complex combinatorial optimization problems.
+              </li>
+            </ul>
+          </div>
+
+          {/* UG Research Scholar */}
+          <div className="border-2 border-[#31748f] rounded-lg p-4">
+            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+              UG Research Scholar, Electrical Department, IIT Jodhpur
+            </h2>
+            <p className="text-[#31748f]">(August 2023 – March 2024)</p>
+            <ul className="list-disc list-inside mt-2">
+              <li className="mb-2">
+                Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) and Meta's Quest, enabling real-time communication through skin for over 50 differently-abled individuals.
+              </li>
+              <li className="mb-2">
+                Designed a 2x2 vibrotactile display with LRA actuators capable of representing all 36 alphabetic and numeric characters, increasing tactile communication efficiency by 30%.
+              </li>
+              <li>
+                Simulated the tactile feedback system using MATLAB, Arduino IDE, Unity, and Simulink, reducing system response time by 20%.
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+
         
       
        
@@ -406,80 +423,100 @@ export function GetOutput(
         </div>
       );
 
-      case "achievements":
-        return (
-          <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
-          {/* Common Heading */}
-          <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-6">
-            CP Profiles
-          </h2>
-      
-          {/* Content Boxes */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Codeforces Box */}
-            <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <img
-                  src="/2944796.webp"
-                  alt="Codeforces Logo"
-                  className="h-12 w-12 mr-4"
-                />
-                <h2 className="text-[#f6c177] text-xl font-bold">Codeforces</h2>
-              </div>
-              <p className="text-[#e0def4] mb-2">
-                <strong>Rating:</strong> Expert (1603)
-              </p>
-              <a
-                href="https://codeforces.com/profile/soumen_kr003"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#f6c177] hover:text-[#9ccfd8]"
-              >
-                View Profile
-              </a>
-            </div>
-      
-            {/* CodeChef Box */}
-            <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <img
-                  src="/6179134-middle.png"
-                  alt="CodeChef Logo"
-                  className="h-12 w-12 mr-4"
-                />
-                <h2 className="text-[#f6c177] text-xl font-bold">CodeChef</h2>
-              </div>
-              <p className="text-[#e0def4] mb-2">
-                <strong>Rating:</strong> 1814 (4★)
-              </p>
-              <a
-                href="https://www.codechef.com/users/soumen_1929"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#f6c177] hover:text-[#9ccfd8]"
-              >
-                View Profile
-              </a>
-            </div>
+case "achievements":
+  return (
+    <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
+      {/* Common Heading */}
+      <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-6">
+        CP Profiles
+      </h2>
+
+      {/* Content Boxes */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Codeforces Box */}
+        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+          <div className="flex items-center mb-4">
+            <img
+              src="/2944796.webp"
+              alt="Codeforces Logo"
+              className="h-12 w-12 mr-4"
+            />
+            <h2 className="text-[#f6c177] text-xl font-bold">Codeforces</h2>
           </div>
-      
-        
-            {/* Remaining Achievements */}
-            <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
-              <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-4">
-                Other Achievements
-              </h2>
-              <ul className="list-disc pl-5 text-[#e0def4]">
-                <li>Department Rank 3 in B.Tech CS+EE</li>
-                <li>
-                  3rd Prize (Project Demonstration) in Industry Day-2024 @ IITJ
-                </li>
-                <li>Part of IITJ Team in ISRO-URC 24</li>
-              </ul>
-            </div>
+          <p className="text-[#e0def4] mb-2">
+            <strong>Rating:</strong> Expert (1639)
+          </p>
+          <a
+            href="https://codeforces.com/profile/soumen_kr003"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#f6c177] hover:text-[#9ccfd8]"
+          >
+            View Profile
+          </a>
+        </div>
+
+        {/* CodeChef Box */}
+        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+          <div className="flex items-center mb-4">
+            <img
+              src="/6179134-middle.png"
+              alt="CodeChef Logo"
+              className="h-12 w-12 mr-4"
+            />
+            <h2 className="text-[#f6c177] text-xl font-bold">CodeChef</h2>
           </div>
-        );
-        
+          <p className="text-[#e0def4] mb-2">
+            <strong>Rating:</strong> 1814 (4★)
+          </p>
+          <a
+            href="https://www.codechef.com/users/soumen_1929"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#f6c177] hover:text-[#9ccfd8]"
+          >
+            View Profile
+          </a>
+        </div>
+
+        {/* LeetCode Box */}
+        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+          <div className="flex items-center mb-4">
+            <img
+              src="/leetcode.png"
+              alt="LeetCode Logo"
+              className="h-12 w-12 mr-4"
+            />
+            <h2 className="text-[#f6c177] text-xl font-bold">LeetCode</h2>
+          </div>
+          <p className="text-[#e0def4] mb-2">
+            <strong>Problems Solved:</strong> 475+
+          </p>
+          <a
+            href="https://leetcode.com/u/Soumen_Kr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#f6c177] hover:text-[#9ccfd8]"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+
+      {/* Remaining Achievements */}
+      <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300 mt-6">
+        <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-4">
+          Other Achievements
+        </h2>
+        <ul className="list-disc pl-5 text-[#e0def4]">
+          <li>Department Rank 3 in B.Tech CS+EE</li>
+          <li>3rd Prize (Project Demonstration) in Industry Day-2024 @ IITJ</li>
+          <li>Part of IITJ Team in ISRO-URC 24</li>
+        </ul>
+      </div>
+    </div>
+  );
+
 
       case "help":
         return (
