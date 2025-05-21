@@ -7,7 +7,7 @@ export default function App() {
        {/* ... */}
        <SpeedInsights />
       <div className="text-white text-center pb-2">
-        @soumen-2024
+        @soumen-2025
       </div>
     </div>
   );
