@@ -18,7 +18,7 @@ export function GetOutput(
       window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
     case "resume":
-      const url = "/GP_Resume_Soumen.pdf";
+      const url = "/GP_Res_SDE_Role_MIX__Off.pdf";
       const link = document.createElement("a");
       link.href = url;
       link.download = "Soumen's_Resume.pdf";
@@ -26,63 +26,128 @@ export function GetOutput(
       link.click();
       document.body.removeChild(link);
       return "";
+    // case "about":
+    //   return (
+    //     <div className="flex flex-col lg:flex-row gap-8 items-start">
+    //       <div className="lg:w-2/3">
+    //         <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-2">
+    //           About Soumen Kumar
+    //         </h1>
+    //         <div>
+    //           <p className="mt-2">
+    //             Oh, hey - meet me, a final-year undergrad at IIT Jodhpur who's juggling{" "}
+    //             <span className="text-[#f6c177]">Computer Science</span> and{" "}
+    //             <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
+    //             (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
+    //             I'm out here saying "Why not both?" and actually making it work.
+    //           </p>
+              
+    //           <p className="mt-2">
+    //             When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
+    //             I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
+    //             And just to keep things interesting, I've got this whole{" "}
+    //             <span className="text-[#f6c177]">competitive coding</span> thing going on, 
+    //             because apparently regular programming wasn't challenging enough.
+    //           </p>
+              
+    //           <p className="mt-2">
+    //             But don't let all this tech talk fool you. Off the keyboard, I'm busy destroying 
+    //             opponents in badminton or strategizing in esports, proving that you can indeed be 
+    //             a tech wizard and have a life (shocking, I know). The best part? I'm actually using 
+    //             these gaming skills to level up my teamwork and strategic thinking - pretty clever, right?
+    //           </p>
+              
+    //           <p className="mt-2">
+    //             Fair warning though: if you get me started on{" "}
+    //             <span className="text-[#f6c177]">machine learning</span> or{" "}
+    //             <span className="text-[#f6c177]">embedded systems</span>, you might want to grab 
+    //             a coffee first. I've got this infectious enthusiasm for building stuff that actually 
+    //             matters, and I'm always on the lookout for other tech enthusiasts who share my 
+    //             "let's make something awesome" mindset.
+    //           </p>
+              
+    //           <p className="text-xs mt-2 italic">
+    //             - ChatGPT (because I'm too busy coding to write my own bio, obviously)
+    //           </p>
+    //         </div>
+    //       </div>
+          
+    //       {/* Profile Picture Container */}
+    //     {/* Square Profile Picture Container */}
+    //     <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
+    //       <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
+    //         <img
+    //           src="/20240628_153106.jpg"
+    //           alt="Soumen Kumar"
+    //           className="w-full h-full object-cover object-center"
+    //           loading="eager"
+    //         />
+    //       </div>
+    //       </div>
+    //     </div>
+    //   );
+
+    // ...existing code...
     case "about":
       return (
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           <div className="lg:w-2/3">
+            {/* Updated About section */}
             <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-2">
               About Soumen Kumar
             </h1>
             <div>
               <p className="mt-2">
-                Oh, hey - meet me, a final-year undergrad at IIT Jodhpur who's juggling{" "}
+                Final-year B.Tech student at IIT Jodhpur, pursuing a dual major in{" "}
                 <span className="text-[#f6c177]">Computer Science</span> and{" "}
-                <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
-                (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
-                I'm out here saying "Why not both?" and actually making it work.
+                <span className="text-[#f6c177]">Electrical Engineering</span>. I enjoy
+                working at the intersection of hardware and software — from backend systems
+                and cloud infrastructure to machine learning models and embedded devices.
               </p>
-              
               <p className="mt-2">
-                When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
-                I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
-                And just to keep things interesting, I've got this whole{" "}
-                <span className="text-[#f6c177]">competitive coding</span> thing going on, 
-                because apparently regular programming wasn't challenging enough.
+                Recently, I completed a{" "}
+                <span className="text-[#f6c177]">Data Science internship at Naukri.com</span>,
+                where I worked on recommendation systems and real-time analytics pipelines.
+                My interests currently span{" "}
+                <span className="text-[#f6c177]">security & cryptography</span> (secure
+                computation, zero-knowledge proofs, post-quantum cryptography),{" "}
+                <span className="text-[#f6c177]">Generative AI</span>, mathematics,
+                algorithms, and statistics.
               </p>
-              
               <p className="mt-2">
-                But don't let all this tech talk fool you. Off the keyboard, I'm busy destroying 
-                opponents in badminton or strategizing in esports, proving that you can indeed be 
-                a tech wizard and have a life (shocking, I know). The best part? I'm actually using 
-                these gaming skills to level up my teamwork and strategic thinking - pretty clever, right?
+                On the development side, I’m exploring{" "}
+                <span className="text-[#f6c177]">SpringBoot</span> for backend engineering
+                and leveraging <span className="text-[#f6c177]">cloud platforms</span> for
+                scalable applications. For my B.Tech project, I’m researching nanosensors
+                and embedded systems integrated with machine learning for healthtech
+                applications, focusing on intelligent data collection and analysis for
+                better diagnostics.
               </p>
-              
               <p className="mt-2">
-                Fair warning though: if you get me started on{" "}
-                <span className="text-[#f6c177]">machine learning</span> or{" "}
-                <span className="text-[#f6c177]">embedded systems</span>, you might want to grab 
-                a coffee first. I've got this infectious enthusiasm for building stuff that actually 
-                matters, and I'm always on the lookout for other tech enthusiasts who share my 
-                "let's make something awesome" mindset.
+                When I’m not immersed in code or research, you’ll find me exploring new
+                concepts in mathematics, reading about algorithmic problem-solving, or
+                engaged in sports like badminton and esports — sharpening both my
+                analytical and strategic thinking skills. I believe in building tech that
+                matters and collaborating with people who share the “let’s create something
+                impactful” mindset.
               </p>
-              
               <p className="text-xs mt-2 italic">
-                - ChatGPT (because I'm too busy coding to write my own bio, obviously)
+                — Written with a blend of caffeine, curiosity, and way too many side
+                projects
               </p>
             </div>
           </div>
-          
+
           {/* Profile Picture Container */}
-        {/* Square Profile Picture Container */}
-        <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
-          <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
-            <img
-              src="/20240628_153106.jpg"
-              alt="Soumen Kumar"
-              className="w-full h-full object-cover object-center"
-              loading="eager"
-            />
-          </div>
+          <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
+            <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
+              <img
+                src="/20240628_153106.jpg"
+                alt="Soumen Kumar"
+                className="w-full h-full object-cover object-center"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
       );
@@ -91,8 +156,9 @@ export function GetOutput(
         <div className="">
           <ul className="list-disc list-inside">
             <li className="m-2 text-[#31748f]">
-              gaining{" "}
-              <span className="text-[#f6c177]">Industry Experience</span>
+              Learning about{" "}
+              <span className="text-[#f6c177]">Generative AI</span> and{" "}
+              <span className="text-[#f6c177]">Large Language Models (LLMs)</span>
             </li>
             <li className="m-2 text-[#31748f]">
               Making meaningful{" "}
@@ -111,7 +177,7 @@ export function GetOutput(
           </ul>
           <p className=" ">
             Last updated on{" "}
-            <span className="text-[#f6c177]">18-05-2025</span>
+            <span className="text-[#f6c177]">09-08-2025</span>
           </p>
         </div>
       );
@@ -123,57 +189,91 @@ case "experiences":
       </h1>
       <div>
         <p className="mt-2 text-[#c4a7e7]">
-          As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on experience across several technical domains, which have allowed me to bridge the gap between my academic learning and real-world problem-solving.
+          As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on
+          experience across diverse technical domains, allowing me to connect academic
+          learning with impactful real-world applications.
         </p>
         <div className="mt-4">
+
+          {/* UG Research Scholar - AyurTech Lab */}
+          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
+            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+              Undergraduate Research Scholar — AyurTech Lab, Electrical Department, IIT Jodhpur
+            </h2>
+            <p className="text-[#31748f]">(August 2025 – Present)</p>
+            <ul className="list-disc list-inside mt-2">
+              <li className="mb-2">
+                Researching <strong>nanosensors</strong> and 
+                <strong> embedded systems</strong> integrated with 
+                <strong> machine learning</strong> for healthtech applications, 
+                focusing on intelligent sensing and diagnostics.
+              </li>
+              <li>
+                Designing and testing sensor-data acquisition pipelines and predictive 
+                ML models aimed at early-stage health condition detection.
+              </li>
+            </ul>
+          </div>
 
           {/* InfoEdge Internship */}
           <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
             <h2 className="text-[#f6c177] font-bold text-lg mb-2">
               Data Science Intern at InfoEdge (naukri.com)
             </h2>
-            <p className="text-[#31748f]">(Present)</p>
+            <p className="text-[#31748f]">(May 2025 – July 2025)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
-                Working with the <strong>Content Recommendation Team</strong> for the <strong>Minis</strong> subsection on both web and mobile apps, revamping the recommendation pipeline using <strong>Bayesian statistics</strong> and <strong>ranking algorithms</strong> to improve personalized content delivery.
+                Worked with the <strong>Content Recommendation Team</strong> for the <strong>Minis</strong> 
+                section (web & mobile), revamping the recommendation pipeline using 
+                <strong> Bayesian statistics</strong> and <strong>ranking algorithms</strong> 
+                to enhance personalized content delivery.
               </li>
               <li>
-                Building an <strong>analytics dashboard</strong> that fetches <strong>user interaction data</strong> from <strong>DataLake</strong> and <strong>Kafka</strong> to enable live comparative insights between the old Minis feed and the <strong>Unified feed</strong> currently in beta testing.
+                Built an <strong>interactive analytics dashboard</strong> using 
+                <strong> DataLake</strong> and <strong>Kafka</strong> to deliver live 
+                comparative insights between the legacy Minis feed and the 
+                <strong> Unified feed</strong> (beta-tested by 5% of the user base).
               </li>
             </ul>
           </div>
 
-          {/* CybraneX Internship */}
+          {/* CybraneX */}
           <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
             <h2 className="text-[#f6c177] font-bold text-lg mb-2">
-              Quantum Developer Intern at CybraneX
+              Quantum Developer — CybraneX
             </h2>
-            <p className="text-[#31748f]">(December 2024 – May 2025)</p>
+            <p className="text-[#31748f]">(December 2024 – May 2025: Intern | August 2025 – Present: Part-time Software Engineer)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
-                Researched <strong>Quantum Hardware Systems</strong> using <strong>Qiskit</strong> and <strong>IBM Quantum</strong>, designing and simulating quantum circuits for hardware optimization and real-world algorithm development.
+                Designing and simulating <strong>quantum circuits</strong> for hardware optimization 
+                using <strong>Qiskit</strong> within the IBM Quantum environment.
               </li>
               <li>
-                Implemented <strong>Quantum Machine Learning (QML)</strong> algorithms using <strong>CUDA-Q</strong> to accelerate simulations and solve complex combinatorial optimization problems.
+                Developing <strong>Quantum Machine Learning (QML)</strong> workflows with <strong>CUDA-Q</strong>, 
+                improving simulation performance and applying quantum optimization to logistics 
+                and scheduling problems.
               </li>
             </ul>
           </div>
 
-          {/* UG Research Scholar */}
+          {/* bHaptics Researcher */}
           <div className="border-2 border-[#31748f] rounded-lg p-4">
             <h2 className="text-[#f6c177] font-bold text-lg mb-2">
-              UG Research Scholar, Electrical Department, IIT Jodhpur
+              Researcher — bHaptics Tactile Communication Project
             </h2>
             <p className="text-[#31748f]">(August 2023 – March 2024)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
-                Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) and Meta's Quest, enabling real-time communication through skin for over 50 differently-abled individuals.
+                Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) 
+                and Meta Quest, enabling real-time tactile communication for over 50 differently-abled individuals.
               </li>
               <li className="mb-2">
-                Designed a 2x2 vibrotactile display with LRA actuators capable of representing all 36 alphabetic and numeric characters, increasing tactile communication efficiency by 30%.
+                Built a 2x2 vibrotactile display with LRA actuators capable of representing 
+                all 36 alphanumeric characters, improving tactile communication efficiency by 30%.
               </li>
               <li>
-                Simulated the tactile feedback system using MATLAB, Arduino IDE, Unity, and Simulink, reducing system response time by 20%.
+                Simulated and tested the tactile feedback system with MATLAB, Arduino IDE, Unity, 
+                and Simulink, reducing response time by 20%.
               </li>
             </ul>
           </div>
@@ -183,10 +283,9 @@ case "experiences":
     </div>
   );
 
-        
-      
-       
-        case "projects":
+
+
+      case "projects":
           const projects = [
             {
               projName: "TripSync - Ride-Sharing Platform",
@@ -322,55 +421,102 @@ case "experiences":
           })}
         </div>
       );
-      case "skills":
-        return (
-          <div>
-            {[
-              {
-                heading: "Languages",
-                skills: ["C/C++", "Python", "R", "HTML/CSS", "JavaScript", "SQL", "Kotlin", "XML"],
-              },
-              {
-                heading: "Developer Tools",
-                skills: ["VS Code", "PyCharm", "MATLAB", "Firebase", "Android Studio", "R-Studio"],
-              },
-              {
-                heading: "Technologies/Frameworks",
-                skills: [
-                  "Linux (Ubuntu)",
-                  "Git",
-                  "Github",
-                  "Node.js",
-                  "React",
-                  "Vercel",
-                  "Scikit-Learn",
-                  "OpenCV",
-                  "Numpy",
-                  "Pandas",
-                  "Scipy",
-                  "Matplotlib",
-                ],
-              },
-            ].map((section) => (
-              <div key={section.heading} className="mb-4">
-                <h2 className="text-lg lg:text-xl md:text-xl mb-2 text-[#f6c177]">
-                  {section.heading}
-                </h2>
-                <div className="flex flex-wrap gap-3">
-                  {section.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="bg-[#2e3440] text-[#c4a7e7]  px-3 py-1 rounded-lg shadow-md"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+case "skills":
+  return (
+    <div>
+      {[
+        {
+          heading: "Languages",
+          skills: [
+            "C/C++",
+            "Python",
+            "R",
+            "Shell Scripting",
+            "HTML/CSS",
+            "JavaScript",
+            "SQL",
+            "Kotlin",
+            "XML"
+          ],
+        },
+        {
+          heading: "Developer Tools",
+          skills: [
+            "VS Code",
+            "PyCharm",
+            "MATLAB",
+            "Firebase",
+            "Android Studio",
+            "R-Studio",
+            "PostgreSQL",
+            "Oracle DB",
+            "DataLake",
+            "ElasticSearch",
+            "Kafka",
+            "GitHub",
+            "Arduino IDE",
+            "Unity",
+            "Simulink"
+          ],
+        },
+        {
+          heading: "Technologies / Frameworks",
+          skills: [
+            "Linux (Ubuntu)",
+            "Git",
+            "SpringBoot",
+            "Google Cloud",
+            "Vercel",
+            "React.js",
+            "Node.js",
+            "Scikit-Learn",
+            "OpenCV",
+            "Pandas",
+            "TensorFlow",
+            "PostgreSQL",
+            "CUDA-Q",
+            "Cryptography Libraries",
+          ],
+        },
+        {
+          heading: "Specialized Domains",
+          skills: [
+            "Security & Cryptography",
+            "Generative AI",
+            "Bayesian Statistics",
+            "Quantum Machine Learning",
+            "Embedded Systems",
+            "Android App Development"
+          ],
+        },
+      ].map((section) => (
+        <div
+          key={section.heading}
+          className={
+            "mb-4 " +
+            (section.heading === "Specialized Domains"
+              ? "bg-[#292639] border border-[#f6c177] p-4 rounded-lg"
+              : "")
+          }
+        >
+          <h2 className="text-lg lg:text-xl md:text-xl mb-2 text-[#f6c177]">
+            {section.heading}
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {section.skills.map((skill) => (
+              <span
+                key={skill}
+                className="bg-[#2e3440] text-[#c4a7e7] px-3 py-1 rounded-lg shadow-md"
+              >
+                {skill}
+              </span>
             ))}
           </div>
-        );
-      
+        </div>
+      ))}
+    </div>
+  );
+
     case "socials":
       return (
         <div>
@@ -402,6 +548,13 @@ case "experiences":
               social: "Email",
               link: "mailto:soumenkumar9503@gmail.com",
               username: "soumenkumar9503@gmail.com",
+              icon: <FaEnvelope />,
+            },
+            // added second email address
+            {
+              social: "Email",
+              link: "mailto:soumensinghdev@gmail.com",
+              username: "soumensinghdev@gmail.com",
               icon: <FaEnvelope />,
             },
           ].map((item) => {
@@ -444,7 +597,7 @@ case "achievements":
             <h2 className="text-[#f6c177] text-xl font-bold">Codeforces</h2>
           </div>
           <p className="text-[#e0def4] mb-2">
-            <strong>Rating:</strong> Expert (1639)
+            <strong>Rating:</strong> Expert (1832)
           </p>
           <a
             href="https://codeforces.com/profile/soumen_kr003"
@@ -490,7 +643,7 @@ case "achievements":
             <h2 className="text-[#f6c177] text-xl font-bold">LeetCode</h2>
           </div>
           <p className="text-[#e0def4] mb-2">
-            <strong>Problems Solved:</strong> 475+
+            <strong>Problems Solved:</strong> 550+
           </p>
           <a
             href="https://leetcode.com/u/Soumen_Kr/"

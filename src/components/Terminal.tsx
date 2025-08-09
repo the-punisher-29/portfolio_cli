@@ -1,6 +1,10 @@
 import CommandArea from "./CommandArea";
 
 export default function Terminal() {
+  const handleKeyPress = (key: string) => {
+  const event = new KeyboardEvent("keydown", { key });
+  window.dispatchEvent(event);
+  };
   return (
     <div className="font-mono text-[#e0def4] bg-[#191724] flex justify-center lg:w-screen  lg:h-screen w-screen h-screen text-sm lg:text-base md:text-base ">
       <div className="lg:w-8/12 m-4 w-11/12 md:w-10/12 border-white border border-b-4  rounded-2xl">
@@ -38,7 +42,7 @@ export default function Terminal() {
         <CommandArea />
       </div>
 
-      {/* <div className="absolute bottom-4 right-4 flex space-x-2">
+      <div className="absolute bottom-4 right-4 flex space-x-2">
         <button
           className="bg-[#c4a7e7] text-[#191724] px-3 py-2 rounded-md"
           title="Up Arrow"
@@ -60,7 +64,7 @@ export default function Terminal() {
         >
           Tab
         </button>
-      </div> */}
+      </div>
     </div>
   );
 }
