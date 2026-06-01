@@ -6,6 +6,7 @@ import {
   FaLinkedin,
   FaEnvelope,
 } from "react-icons/fa";
+import { COMMANDS, HISTORY_KEY, suggestCommand } from "./commands";
 
 const THEMES = [
   "rose-pine",
@@ -88,6 +89,11 @@ export function GetOutput(
   if (cmd === "theme" || cmd.startsWith("theme ")) {
     return renderThemeCommand(cmd);
   }
+  if (cmd === "echo" || cmd.startsWith("echo ")) {
+    // Use the original (non-lowercased) text so case is preserved.
+    const text = command.trim().slice(4).trim();
+    return <p className="whitespace-pre-wrap break-words">{text}</p>;
+  }
   switch (cmd) {
     case "clear":
       setCommandList([]);
@@ -95,6 +101,111 @@ export function GetOutput(
     case "blogs":
       window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
+    case "whoami":
+      return <p>guest</p>;
+    case "pwd":
+      return <p>/home/soumen/portfolio</p>;
+    case "date":
+      return <p>{new Date().toString()}</p>;
+    case "ls":
+      return (
+        <div className="flex flex-wrap gap-x-6 gap-y-1">
+          {COMMANDS.map((c) => (
+            <span key={c.name} className="text-[var(--foam)]">
+              {c.name}
+            </span>
+          ))}
+        </div>
+      );
+    case "history": {
+      let items: string[] = [];
+      try {
+        const raw = localStorage.getItem(HISTORY_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed))
+            items = parsed.filter((x) => typeof x === "string");
+        }
+      } catch {
+        /* ignore */
+      }
+      if (items.length === 0)
+        return <p className="text-[var(--pine)]">No history yet.</p>;
+      return (
+        <div>
+          {items.map((h, i) => (
+            <p key={i}>
+              <span className="text-[var(--pine)] inline-block w-10 text-right pr-3">
+                {i + 1}
+              </span>
+              <span>{h}</span>
+            </p>
+          ))}
+        </div>
+      );
+    }
+    case "neofetch": {
+      const theme = document.documentElement.dataset.theme || "rose-pine";
+      const secs = Math.max(0, Math.floor(performance.now() / 1000));
+      const uptime = `${Math.floor(secs / 60)}m ${secs % 60}s`;
+      const rows: [string, string][] = [
+        ["OS", "Linux (Arch / Ubuntu)"],
+        ["Host", "IIT Jodhpur — CS + EE"],
+        ["Role", "SWE • ML • Quantum • Security"],
+        ["Shell", "portfolio.sh"],
+        ["Editor", "VS Code / Neovim"],
+        ["Languages", "C/C++, Python, Kotlin, TS"],
+        ["CP", "CF Expert (1832) • CC 4★ • LC 550+"],
+        ["Theme", theme],
+        ["Uptime", uptime],
+      ];
+      const swatches = [
+        "var(--btn-close)",
+        "var(--love)",
+        "var(--rose)",
+        "var(--gold)",
+        "var(--btn-max)",
+        "var(--pine)",
+        "var(--foam)",
+        "var(--iris)",
+      ];
+      return (
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+          {/* prettier-ignore */}
+          <pre className="text-[var(--gold)] text-xs leading-tight">
+{` ┌────────────┐
+ │ guest@~ $_ │
+ │            │
+ │  > soumen  │
+ │            │
+ └────────────┘`}
+          </pre>
+          <div>
+            <p className="mb-1">
+              <span className="text-[var(--gold)]">guest</span>
+              <span className="text-[var(--text)]">@</span>
+              <span className="text-[var(--gold)]">portfolio</span>
+            </p>
+            <p className="text-[var(--iris)] mb-1">---------------</p>
+            {rows.map(([k, v]) => (
+              <p key={k}>
+                <span className="text-[var(--gold)] inline-block w-24">{k}</span>
+                <span className="text-[var(--text)]">{v}</span>
+              </p>
+            ))}
+            <div className="flex gap-1 mt-3">
+              {swatches.map((c, i) => (
+                <span
+                  key={i}
+                  className="inline-block w-4 h-4 rounded-sm"
+                  style={{ backgroundColor: c }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
     case "resume": {
       const url = "/GP_Res_SDE_Role_MIX__Off.pdf";
       const link = document.createElement("a");
@@ -753,70 +864,25 @@ case "achievements":
 
       case "help":
         return (
-          <>
-            <div className="">
-              <p className="text-[var(--iris)] col-span-2">All available commands:</p>
-              {[
-                { comm: "about", desc: "- Learn more about me" },
-                {
-                  comm: "achievements",
-                  desc: "- My achievements and awards",
-                },
-                {
-                  comm: "experiences",
-                  desc: "- Learn about my experiences",
-                },
-                {
-                  comm: "projects",
-                  desc: "- A glimpse into my work!",
-                },
-      
-                {
-                  comm: "skills",
-                  desc: "- Checkout my technical skills",
-                },
-                {
-                  comm: "socials",
-                  desc: "- You can find me here!",
-                },
-                {
-                  comm: "resume",
-                  desc: "- My Professional journey",
-                },
-                {
-                  comm: "goals",
-                  desc: "- Explore my interests",
-                },
-                {
-                  comm: "blogs",
-                  desc: "- A collection of my thoughts and occasional rants",
-                },
-                {
-                  comm: "theme",
-                  desc: "- Switch color theme (try 'theme dracula')",
-                },
-                {
-                  comm: "clear",
-                  desc: "- Clear the Terminal",
-                },
-                {
-                  comm: "sudo rm -rf /*",
-                  desc: "- Try it on your risk",
-                },
-              ].map((item) => {
-                return (
-                  <div key={item.comm} className="flex items-center">
-                    <span className="text-[var(--gold)] lg:w-36 min-w-24 md:w-36">
-                      {item.comm}
-                    </span>
-                    <span className="text-[var(--pine)]">{item.desc}</span>
-                  </div>
-                );
-              })}
+          <div>
+            <p className="text-[var(--iris)] mb-1">All available commands:</p>
+            {COMMANDS.map((item) => (
+              <div key={item.name} className="flex items-start">
+                <span className="text-[var(--gold)] lg:w-36 min-w-28 md:w-36">
+                  {item.name}
+                </span>
+                <span className="text-[var(--pine)]">- {item.desc}</span>
+              </div>
+            ))}
+            <div className="flex items-start">
+              <span className="text-[var(--gold)] lg:w-36 min-w-28 md:w-36">
+                sudo rm -rf /*
+              </span>
+              <span className="text-[var(--pine)]">- Try it on your own risk</span>
             </div>
-          </>
+          </div>
         );
-      
+
     case "sudo rm -rf /*": {
       const newWindow = window.open("about:blank", "_blank");
       if (newWindow) {
@@ -884,15 +950,23 @@ case "achievements":
 
       return "";
     }
-    default:
+    default: {
+      const suggestion = suggestCommand(cmd);
       return (
         <div>
-          <p className="text-[var(--love)]">Command not found</p>
+          <p className="text-[var(--love)]">Command not found: {cmd}</p>
+          {suggestion && (
+            <p>
+              Did you mean{" "}
+              <span className="text-[var(--gold)]">{suggestion}</span>?
+            </p>
+          )}
           <p>
             Try <span className="text-[var(--gold)]">help</span> to see available
             commands
           </p>
         </div>
       );
+    }
   }
 }

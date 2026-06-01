@@ -1,39 +1,57 @@
 import { Command } from "../components/CommandArea";
 import { GetOutput } from "./GetOutput";
+import { completeCommand, HISTORY_KEY, HISTORY_LIMIT } from "./commands";
 
 export default function handleKeyDown(
   e: React.KeyboardEvent<HTMLInputElement>,
   currentCommand: string,
-  commandList: Command[],
+  history: string[],
   currentIndex: number,
   setCommandList: React.Dispatch<React.SetStateAction<Command[]>>,
+  setHistory: React.Dispatch<React.SetStateAction<string[]>>,
   setCurrentCommand: React.Dispatch<React.SetStateAction<string>>,
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
 ) {
   if (e.key === "Enter") {
+    const trimmed = currentCommand.trim();
     const newCommand: Command = {
       command: currentCommand.toLowerCase(),
       output: GetOutput(currentCommand, setCommandList),
     };
-    if (newCommand.command !== "clear")
+    if (newCommand.command.trim() !== "clear")
       setCommandList((prev) => [...prev, newCommand]);
+
+    // Record history (skip empties and consecutive duplicates) and persist it.
+    if (trimmed.length > 0) {
+      setHistory((prev) => {
+        if (prev[prev.length - 1] === trimmed) return prev;
+        const next = [...prev, trimmed].slice(-HISTORY_LIMIT);
+        try {
+          localStorage.setItem(HISTORY_KEY, JSON.stringify(next));
+        } catch {
+          /* localStorage may be unavailable — ignore */
+        }
+        return next;
+      });
+    }
+
     setCurrentCommand("");
     setCurrentIndex(-1);
   } else if (e.key === "ArrowUp") {
-    if (commandList.length > 0) {
-      if (currentIndex == -1) {
-        setCurrentIndex(commandList.length - 1);
-        setCurrentCommand(commandList[commandList.length - 1].command);
+    if (history.length > 0) {
+      if (currentIndex === -1) {
+        setCurrentIndex(history.length - 1);
+        setCurrentCommand(history[history.length - 1]);
       } else if (currentIndex > 0) {
         setCurrentIndex(currentIndex - 1);
-        setCurrentCommand(commandList[currentIndex - 1].command);
+        setCurrentCommand(history[currentIndex - 1]);
       }
     }
   } else if (e.key === "ArrowDown") {
-    if (commandList.length > 0 && currentIndex !== -1) {
-      if (currentIndex < commandList.length - 1) {
+    if (history.length > 0 && currentIndex !== -1) {
+      if (currentIndex < history.length - 1) {
         setCurrentIndex(currentIndex + 1);
-        setCurrentCommand(commandList[currentIndex + 1].command);
+        setCurrentCommand(history[currentIndex + 1]);
       } else {
         setCurrentIndex(-1);
         setCurrentCommand("");
@@ -41,33 +59,7 @@ export default function handleKeyDown(
     }
   } else if (e.key === "Tab") {
     e.preventDefault();
-    if (currentCommand.toLowerCase().startsWith("a") && !currentCommand.toLowerCase().startsWith("ach")) {
-        setCurrentCommand("about");
-    } else if (currentCommand.toLowerCase().startsWith("ach")) {
-        setCurrentCommand("achievements");
-    } else if (currentCommand.toLowerCase().startsWith("e")) {  // Experience comes before projects
-        setCurrentCommand("experiences");
-    } else if (currentCommand.toLowerCase().startsWith("p")) {
-        setCurrentCommand("projects");
-    } else if (currentCommand.toLowerCase().startsWith("c")) {
-        setCurrentCommand("clear");
-    } else if (currentCommand.toLowerCase().startsWith("b")) {
-        setCurrentCommand("blogs");
-    } else if (currentCommand.toLowerCase().startsWith("sk")) {
-        setCurrentCommand("skills");
-    } else if (currentCommand.toLowerCase().startsWith("so")) {
-        setCurrentCommand("socials");
-    } else if (currentCommand.toLowerCase().startsWith("r")) {
-        setCurrentCommand("resume");
-    } else if (currentCommand.toLowerCase().startsWith("g")) {
-        setCurrentCommand("goals");
-    } else if (currentCommand.toLowerCase().startsWith("su")) {
-        setCurrentCommand("sudo rm -rf /*");
-    } else if (currentCommand.toLowerCase().startsWith("t")) {
-        setCurrentCommand("theme");
-    } else if (currentCommand.toLowerCase().startsWith("h")) {
-        setCurrentCommand("help");
-    }
-}
-
+    const completed = completeCommand(currentCommand);
+    if (completed) setCurrentCommand(completed);
+  }
 }
