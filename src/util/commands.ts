@@ -1,36 +1,9 @@
-// Single source of truth for the terminal's commands.
-// Used by `help`, `ls`, Tab-completion (ghost text), and "did you mean?".
+// Terminal input helpers: Tab-completion (ghost text) and "did you mean?".
+// The command list itself lives in ../commands/registry.
 
-export interface CommandMeta {
-  name: string;
-  desc: string;
-}
+import { COMMAND_NAMES } from "../commands/registry";
 
-export const COMMANDS: CommandMeta[] = [
-  { name: "about", desc: "Learn more about me" },
-  { name: "experiences", desc: "Where I've worked & researched" },
-  { name: "projects", desc: "A glimpse into my work" },
-  { name: "skills", desc: "Checkout my technical skills" },
-  { name: "achievements", desc: "Achievements & competitive-programming profiles" },
-  { name: "socials", desc: "You can find me here!" },
-  { name: "resume", desc: "Download my resume" },
-  { name: "goals", desc: "What I'm currently exploring" },
-  { name: "blogs", desc: "A collection of my thoughts and occasional rants" },
-  { name: "neofetch", desc: "System info, terminal-style" },
-  { name: "whoami", desc: "Print the current user" },
-  { name: "ls", desc: "List available commands" },
-  { name: "date", desc: "Show the current date & time" },
-  { name: "echo", desc: "Print a line of text" },
-  { name: "history", desc: "Show command history" },
-  { name: "theme", desc: "Switch color theme (try 'theme dracula')" },
-  { name: "clear", desc: "Clear the terminal" },
-  { name: "help", desc: "List all available commands" },
-];
-
-export const COMMAND_NAMES = COMMANDS.map((c) => c.name);
-
-export const HISTORY_KEY = "portfolio-history";
-export const HISTORY_LIMIT = 100;
+export { HISTORY_KEY, HISTORY_LIMIT } from "./constants";
 
 /**
  * Tab-completion target for a typed prefix.
