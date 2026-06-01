@@ -2,8 +2,13 @@ import CommandArea from "./CommandArea";
 
 export default function Terminal() {
   const handleKeyPress = (key: string) => {
-  const event = new KeyboardEvent("keydown", { key });
-  window.dispatchEvent(event);
+    // Dispatch on the input itself so the event bubbles up to React's root
+    // delegated listener and triggers the input's onKeyDown handler.
+    // Dispatching on `window` never reaches it (window is above the root).
+    const input = document.getElementById("terminal-input");
+    if (!input) return;
+    input.focus();
+    input.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
   };
   return (
     <div className="font-mono text-[#e0def4] bg-[#191724] flex justify-center lg:w-screen  lg:h-screen w-screen h-screen text-sm lg:text-base md:text-base ">

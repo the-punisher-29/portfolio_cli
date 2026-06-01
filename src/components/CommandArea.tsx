@@ -50,7 +50,7 @@ export default function CommandArea() {
             </p>
             <p>{item.command}</p>
           </div>
-          <div className="lg:mx-6 mx-4" key={index}>
+          <div className="lg:mx-6 mx-4">
             {item.output}
           </div>
         </div>
@@ -61,6 +61,8 @@ export default function CommandArea() {
           <span className="text-[#f7bfbd]">soumen:~$</span>
         </p>
         <input
+          id="terminal-input"
+          aria-label="Terminal command input"
           className="w-full bg-transparent  outline-none"
           autoFocus
           ref={inputRef}

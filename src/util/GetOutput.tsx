@@ -17,7 +17,7 @@ export function GetOutput(
     case "blogs":
       window.open("https://fallacious-air-9fe.notion.site/Welcome-to-my-blog-165b1767627780a6883dd731f94dd979?pvs=74", "_blank");
       return "";
-    case "resume":
+    case "resume": {
       const url = "/GP_Res_SDE_Role_MIX__Off.pdf";
       const link = document.createElement("a");
       link.href = url;
@@ -26,6 +26,7 @@ export function GetOutput(
       link.click();
       document.body.removeChild(link);
       return "";
+    }
     // case "about":
     //   return (
     //     <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -285,7 +286,7 @@ case "experiences":
 
 
 
-      case "projects":
+      case "projects": {
           const projects = [
             {
               projName: "TripSync - Ride-Sharing Platform",
@@ -421,6 +422,7 @@ case "experiences":
           })}
         </div>
       );
+    }
 case "skills":
   return (
     <div>
@@ -559,7 +561,7 @@ case "skills":
             },
           ].map((item) => {
             return (
-              <div className="flex items-center mb-2">
+              <div key={item.username} className="flex items-center mb-2">
                 <span className="text-[#f6c177]  mr-2">{item.icon}</span>
                 <span className="text-[#f6c177] w-28">{item.social}</span>
                 <a
@@ -721,7 +723,7 @@ case "achievements":
                 },
               ].map((item) => {
                 return (
-                  <div className="flex items-center">
+                  <div key={item.comm} className="flex items-center">
                     <span className="text-[#f6c177] lg:w-36 min-w-24 md:w-36">
                       {item.comm}
                     </span>
@@ -733,7 +735,7 @@ case "achievements":
           </>
         );
       
-    case "sudo rm -rf /*":
+    case "sudo rm -rf /*": {
       const newWindow = window.open("about:blank", "_blank");
       if (newWindow) {
         newWindow.document.write(`
@@ -799,6 +801,7 @@ case "achievements":
       }
 
       return "";
+    }
     default:
       return (
         <div>
