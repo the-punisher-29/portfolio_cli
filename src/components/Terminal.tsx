@@ -1,6 +1,10 @@
+import { useRef, useState } from "react";
 import CommandArea from "./CommandArea";
 
 export default function Terminal() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [minimized, setMinimized] = useState(false);
+
   const handleKeyPress = (key: string) => {
     // Dispatch on the input itself so the event bubbles up to React's root
     // delegated listener and triggers the input's onKeyDown handler.
@@ -10,26 +14,57 @@ export default function Terminal() {
     input.focus();
     input.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
   };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      rootRef.current?.requestFullscreen?.().catch(() => {});
+    } else {
+      document.exitFullscreen?.().catch(() => {});
+    }
+  };
+
   return (
-    <div className="font-mono text-[#e0def4] bg-[#191724] flex justify-center lg:w-screen  lg:h-screen w-screen h-screen text-sm lg:text-base md:text-base ">
-      <div className="lg:w-8/12 m-4 w-11/12 md:w-10/12 border-white border border-b-4  rounded-2xl">
+    <div
+      ref={rootRef}
+      className="font-mono text-[var(--text)] bg-[var(--bg)] flex justify-center lg:w-screen  lg:h-screen w-screen h-screen text-sm lg:text-base md:text-base "
+    >
+      <div
+        className={
+          "lg:w-8/12 m-4 w-11/12 md:w-10/12 border-white border border-b-4  rounded-2xl " +
+          (minimized ? "self-start" : "")
+        }
+      >
         <div
           className="rounded-t-2xl px-4 py-3  border border-b-pink-200
          w-full flex items-center"
+          onClick={() => minimized && setMinimized(false)}
+          title={minimized ? "Click to restore" : undefined}
         >
           {/* buttons */}
           <div className="flex items-center gap-2 ml-2">
             <div
-              className="w-3.5 h-3.5 rounded-full bg-[#f7768e] hover:bg-red-500"
+              className="w-3.5 h-3.5 rounded-full bg-[var(--btn-close)] hover:bg-red-500 cursor-pointer"
               title="Close"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMinimized(true);
+              }}
             ></div>
             <div
-              className="w-3.5 h-3.5 rounded-full bg-[#e0af68] hover:bg-yellow-500"
+              className="w-3.5 h-3.5 rounded-full bg-[var(--btn-min)] hover:bg-yellow-500 cursor-pointer"
               title="Minimize"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMinimized((m) => !m);
+              }}
             ></div>
             <div
-              className="w-3.5 h-3.5 rounded-full bg-[#9ece6a] hover:bg-green-500"
-              title="Maximize"
+              className="w-3.5 h-3.5 rounded-full bg-[var(--btn-max)] hover:bg-green-500 cursor-pointer"
+              title="Maximize (fullscreen)"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFullscreen();
+              }}
             ></div>
           </div>
           {/* title */}
@@ -44,32 +79,37 @@ export default function Terminal() {
           <div className="w-3.5 h-3.5 invisible"></div>
         </div>
 
-        <CommandArea />
+        {/* Hidden (not unmounted) when minimized so command history survives */}
+        <div className={minimized ? "hidden" : ""}>
+          <CommandArea />
+        </div>
       </div>
 
-      <div className="absolute bottom-4 right-4 flex space-x-2">
-        <button
-          className="bg-[#c4a7e7] text-[#191724] px-3 py-2 rounded-md"
-          title="Up Arrow"
-          onClick={() => handleKeyPress("ArrowUp")}
-        >
-          ↑
-        </button>
-        <button
-          className="bg-[#c4a7e7] text-[#191724] px-3 py-2 rounded-md"
-          title="Down Arrow"
-          onClick={() => handleKeyPress("ArrowDown")}
-        >
-          ↓
-        </button>
-        <button
-          className="bg-[#c4a7e7] text-[#191724] px-3 py-2 rounded-md"
-          title="Tab"
-          onClick={() => handleKeyPress("Tab")}
-        >
-          Tab
-        </button>
-      </div>
+      {!minimized && (
+        <div className="absolute bottom-4 right-4 flex space-x-2">
+          <button
+            className="bg-[var(--iris)] text-[var(--bg)] px-3 py-2 rounded-md"
+            title="Up Arrow"
+            onClick={() => handleKeyPress("ArrowUp")}
+          >
+            ↑
+          </button>
+          <button
+            className="bg-[var(--iris)] text-[var(--bg)] px-3 py-2 rounded-md"
+            title="Down Arrow"
+            onClick={() => handleKeyPress("ArrowDown")}
+          >
+            ↓
+          </button>
+          <button
+            className="bg-[var(--iris)] text-[var(--bg)] px-3 py-2 rounded-md"
+            title="Tab"
+            onClick={() => handleKeyPress("Tab")}
+          >
+            Tab
+          </button>
+        </div>
+      )}
     </div>
   );
 }

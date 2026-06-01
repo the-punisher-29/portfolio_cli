@@ -63,6 +63,8 @@ export default function handleKeyDown(
         setCurrentCommand("goals");
     } else if (currentCommand.toLowerCase().startsWith("su")) {
         setCurrentCommand("sudo rm -rf /*");
+    } else if (currentCommand.toLowerCase().startsWith("t")) {
+        setCurrentCommand("theme");
     } else if (currentCommand.toLowerCase().startsWith("h")) {
         setCurrentCommand("help");
     }

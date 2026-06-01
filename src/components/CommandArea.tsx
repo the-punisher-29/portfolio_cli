@@ -39,14 +39,14 @@ export default function CommandArea() {
   // }, []);
 
   return (
-    <div className="flex-grow overflow-y-auto overflow-x-hidden space-y-2 max-h-[calc(100vh-100px)] px-4">
+    <div className="flex-grow overflow-y-auto overflow-x-hidden space-y-2 max-h-[calc(100vh-100px)] px-4 pb-20 lg:pb-6">
       <Header />
       {commandList.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="animate-cmd">
           <div className="flex mb-2">
             <p className="mr-2">
-              <span className="text-[#ebbcba]">guest</span>@
-              <span className="text-[#ebbcba]">soumen:~$</span>
+              <span className="text-[var(--rose)]">guest</span>@
+              <span className="text-[var(--rose)]">soumen:~$</span>
             </p>
             <p>{item.command}</p>
           </div>
@@ -57,13 +57,13 @@ export default function CommandArea() {
       ))}
       <div className="flex items-center">
         <p className="mr-2">
-          <span className="text-[#ffbebb]">guest</span>@
-          <span className="text-[#f7bfbd]">soumen:~$</span>
+          <span className="text-[var(--prompt-a)]">guest</span>@
+          <span className="text-[var(--prompt-b)]">soumen:~$</span>
         </p>
         <input
           id="terminal-input"
           aria-label="Terminal command input"
-          className="w-full bg-transparent  outline-none"
+          className="w-full bg-transparent outline-none caret-[var(--gold)]"
           autoFocus
           ref={inputRef}
           value={currentCommand}

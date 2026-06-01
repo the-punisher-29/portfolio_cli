@@ -4,8 +4,9 @@ export default function App() {
   return (
     <div>
       <Terminal />
-       {/* ... */}
-       <SpeedInsights />
+      {/* Subtle CRT scanlines + vignette overlay (non-interactive) */}
+      <div className="crt-overlay" aria-hidden="true" />
+      <SpeedInsights />
       <div className="text-white text-center pb-2">
         @soumen-2025
       </div>

@@ -6,11 +6,89 @@ import {
   FaLinkedin,
   FaEnvelope,
 } from "react-icons/fa";
+
+const THEMES = [
+  "rose-pine",
+  "rose-pine-dawn",
+  "dracula",
+  "gruvbox",
+  "nord",
+  "matrix",
+] as const;
+
+function applyTheme(name: string) {
+  document.documentElement.dataset.theme = name;
+  try {
+    localStorage.setItem("portfolio-theme", name);
+  } catch {
+    /* localStorage may be unavailable (private mode) — ignore */
+  }
+}
+
+function renderThemeCommand(cmd: string): JSX.Element {
+  const arg = cmd.split(/\s+/)[1];
+  const current = document.documentElement.dataset.theme || "rose-pine";
+
+  if (!arg) {
+    return (
+      <div>
+        <p className="mb-2">
+          Current theme:{" "}
+          <span className="text-[var(--gold)]">{current}</span>
+        </p>
+        <p className="mb-1 text-[var(--iris)]">Available themes:</p>
+        <div className="flex flex-wrap gap-2 mb-2">
+          {THEMES.map((t) => (
+            <span
+              key={t}
+              className={
+                "px-3 py-1 rounded-lg border " +
+                (t === current
+                  ? "border-[var(--gold)] text-[var(--gold)]"
+                  : "border-[var(--overlay)] text-[var(--text)]")
+              }
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+        <p className="text-[var(--pine)]">
+          Usage: <span className="text-[var(--gold)]">theme &lt;name&gt;</span>{" "}
+          — e.g. <span className="text-[var(--gold)]">theme dracula</span>
+        </p>
+      </div>
+    );
+  }
+
+  if ((THEMES as readonly string[]).includes(arg)) {
+    applyTheme(arg);
+    return (
+      <p>
+        Theme switched to <span className="text-[var(--gold)]">{arg}</span> ✦
+      </p>
+    );
+  }
+
+  return (
+    <div>
+      <p className="text-[var(--love)]">Unknown theme: {arg}</p>
+      <p>
+        Try one of:{" "}
+        <span className="text-[var(--gold)]">{THEMES.join(", ")}</span>
+      </p>
+    </div>
+  );
+}
+
 export function GetOutput(
   command: string,
   setCommandList: React.Dispatch<React.SetStateAction<Command[]>>
 ): JSX.Element | "" {
-  switch (command.toLowerCase().trim()) {
+  const cmd = command.toLowerCase().trim();
+  if (cmd === "theme" || cmd.startsWith("theme ")) {
+    return renderThemeCommand(cmd);
+  }
+  switch (cmd) {
     case "clear":
       setCommandList([]);
       return "";
@@ -31,14 +109,14 @@ export function GetOutput(
     //   return (
     //     <div className="flex flex-col lg:flex-row gap-8 items-start">
     //       <div className="lg:w-2/3">
-    //         <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-2">
+    //         <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[var(--gold)] mb-2">
     //           About Soumen Kumar
     //         </h1>
     //         <div>
     //           <p className="mt-2">
     //             Oh, hey - meet me, a final-year undergrad at IIT Jodhpur who's juggling{" "}
-    //             <span className="text-[#f6c177]">Computer Science</span> and{" "}
-    //             <span className="text-[#f6c177]">Electrical Engineering</span> like it's no big deal 
+    //             <span className="text-[var(--gold)]">Computer Science</span> and{" "}
+    //             <span className="text-[var(--gold)]">Electrical Engineering</span> like it's no big deal 
     //             (spoiler: it totally is). While everyone else is picking sides between hardware and software, 
     //             I'm out here saying "Why not both?" and actually making it work.
     //           </p>
@@ -47,7 +125,7 @@ export function GetOutput(
     //             When I'm not diving deep into some data structures and algorithms study that would make most people's heads spin, 
     //             I'm probably building some app or tweaking frontend designs - you know, casual weekend stuff. 
     //             And just to keep things interesting, I've got this whole{" "}
-    //             <span className="text-[#f6c177]">competitive coding</span> thing going on, 
+    //             <span className="text-[var(--gold)]">competitive coding</span> thing going on, 
     //             because apparently regular programming wasn't challenging enough.
     //           </p>
               
@@ -60,8 +138,8 @@ export function GetOutput(
               
     //           <p className="mt-2">
     //             Fair warning though: if you get me started on{" "}
-    //             <span className="text-[#f6c177]">machine learning</span> or{" "}
-    //             <span className="text-[#f6c177]">embedded systems</span>, you might want to grab 
+    //             <span className="text-[var(--gold)]">machine learning</span> or{" "}
+    //             <span className="text-[var(--gold)]">embedded systems</span>, you might want to grab 
     //             a coffee first. I've got this infectious enthusiasm for building stuff that actually 
     //             matters, and I'm always on the lookout for other tech enthusiasts who share my 
     //             "let's make something awesome" mindset.
@@ -76,7 +154,7 @@ export function GetOutput(
     //       {/* Profile Picture Container */}
     //     {/* Square Profile Picture Container */}
     //     <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
-    //       <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
+    //       <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[var(--gold)] shadow-lg">
     //         <img
     //           src="/20240628_153106.jpg"
     //           alt="Soumen Kumar"
@@ -94,31 +172,31 @@ export function GetOutput(
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           <div className="lg:w-2/3">
             {/* Updated About section */}
-            <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-2">
+            <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[var(--gold)] mb-2">
               About Soumen Kumar
             </h1>
             <div>
               <p className="mt-2">
                 Final-year B.Tech student at IIT Jodhpur, pursuing a dual major in{" "}
-                <span className="text-[#f6c177]">Computer Science</span> and{" "}
-                <span className="text-[#f6c177]">Electrical Engineering</span>. I enjoy
+                <span className="text-[var(--gold)]">Computer Science</span> and{" "}
+                <span className="text-[var(--gold)]">Electrical Engineering</span>. I enjoy
                 working at the intersection of hardware and software — from backend systems
                 and cloud infrastructure to machine learning models and embedded devices.
               </p>
               <p className="mt-2">
                 Recently, I completed a{" "}
-                <span className="text-[#f6c177]">Data Science internship at Naukri.com</span>,
+                <span className="text-[var(--gold)]">Data Science internship at Naukri.com</span>,
                 where I worked on recommendation systems and real-time analytics pipelines.
                 My interests currently span{" "}
-                <span className="text-[#f6c177]">security & cryptography</span> (secure
+                <span className="text-[var(--gold)]">security & cryptography</span> (secure
                 computation, zero-knowledge proofs, post-quantum cryptography),{" "}
-                <span className="text-[#f6c177]">Generative AI</span>, mathematics,
+                <span className="text-[var(--gold)]">Generative AI</span>, mathematics,
                 algorithms, and statistics.
               </p>
               <p className="mt-2">
                 On the development side, I’m exploring{" "}
-                <span className="text-[#f6c177]">SpringBoot</span> for backend engineering
-                and leveraging <span className="text-[#f6c177]">cloud platforms</span> for
+                <span className="text-[var(--gold)]">SpringBoot</span> for backend engineering
+                and leveraging <span className="text-[var(--gold)]">cloud platforms</span> for
                 scalable applications. For my B.Tech project, I’m researching nanosensors
                 and embedded systems integrated with machine learning for healthtech
                 applications, focusing on intelligent data collection and analysis for
@@ -141,7 +219,7 @@ export function GetOutput(
 
           {/* Profile Picture Container */}
           <div className="lg:w-1/4 flex justify-center lg:justify-end lg:sticky lg:top-4">
-            <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[#f6c177] shadow-lg">
+            <div className="w-[280px] h-[280px] overflow-hidden border-2 border-[var(--gold)] shadow-lg">
               <img
                 src="/20240628_153106.jpg"
                 alt="Soumen Kumar"
@@ -156,40 +234,40 @@ export function GetOutput(
       return (
         <div className="">
           <ul className="list-disc list-inside">
-            <li className="m-2 text-[#31748f]">
+            <li className="m-2 text-[var(--pine)]">
               Learning about{" "}
-              <span className="text-[#f6c177]">Generative AI</span> and{" "}
-              <span className="text-[#f6c177]">Large Language Models (LLMs)</span>
+              <span className="text-[var(--gold)]">Generative AI</span> and{" "}
+              <span className="text-[var(--gold)]">Large Language Models (LLMs)</span>
             </li>
-            <li className="m-2 text-[#31748f]">
+            <li className="m-2 text-[var(--pine)]">
               Making meaningful{" "}
-              <span className="text-[#f6c177]">open source</span> contributions
+              <span className="text-[var(--gold)]">open source</span> contributions
             </li>
-            <li className="m-2 text-[#31748f]">
+            <li className="m-2 text-[var(--pine)]">
               Explore and Excel in{" "}
-              <span className="text-[#f6c177]">system design</span> and{" "}
-              <span className="text-[#f6c177]">cloud technologies</span>
+              <span className="text-[var(--gold)]">system design</span> and{" "}
+              <span className="text-[var(--gold)]">cloud technologies</span>
             </li>
-            <li className="m-2 text-[#31748f]">
+            <li className="m-2 text-[var(--pine)]">
               learning{" "}
-              <span className="text-[#f6c177]">terminal and desktop applications</span>{" "}
+              <span className="text-[var(--gold)]">terminal and desktop applications</span>{" "}
               development with DotNet and C++
             </li>
           </ul>
           <p className=" ">
             Last updated on{" "}
-            <span className="text-[#f6c177]">09-08-2025</span>
+            <span className="text-[var(--gold)]">09-08-2025</span>
           </p>
         </div>
       );
 case "experiences":
   return (
     <div className="">
-      <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[#f6c177] mb-4">
+      <h1 className="lg:text-2xl md:text-2xl text-xl font-bold text-[var(--gold)] mb-4">
         Experiences
       </h1>
       <div>
-        <p className="mt-2 text-[#c4a7e7]">
+        <p className="mt-2 text-[var(--iris)]">
           As an IIT Jodhpur undergraduate, I have had the privilege of gaining hands-on
           experience across diverse technical domains, allowing me to connect academic
           learning with impactful real-world applications.
@@ -197,11 +275,11 @@ case "experiences":
         <div className="mt-4">
 
           {/* UG Research Scholar - AyurTech Lab */}
-          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
-            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+          <div className="border-2 border-[var(--pine)] rounded-lg p-4 mb-4">
+            <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
               Undergraduate Research Scholar — AyurTech Lab, Electrical Department, IIT Jodhpur
             </h2>
-            <p className="text-[#31748f]">(August 2025 – Present)</p>
+            <p className="text-[var(--pine)]">(August 2025 – Present)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
                 Researching <strong>nanosensors</strong> and 
@@ -217,11 +295,11 @@ case "experiences":
           </div>
 
           {/* InfoEdge Internship */}
-          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
-            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+          <div className="border-2 border-[var(--pine)] rounded-lg p-4 mb-4">
+            <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
               Data Science Intern at InfoEdge (naukri.com)
             </h2>
-            <p className="text-[#31748f]">(May 2025 – July 2025)</p>
+            <p className="text-[var(--pine)]">(May 2025 – July 2025)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
                 Worked with the <strong>Content Recommendation Team</strong> for the <strong>Minis</strong> 
@@ -239,11 +317,11 @@ case "experiences":
           </div>
 
           {/* CybraneX */}
-          <div className="border-2 border-[#31748f] rounded-lg p-4 mb-4">
-            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+          <div className="border-2 border-[var(--pine)] rounded-lg p-4 mb-4">
+            <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
               Quantum Developer — CybraneX
             </h2>
-            <p className="text-[#31748f]">(December 2024 – May 2025: Intern | August 2025 – Present: Part-time Software Engineer)</p>
+            <p className="text-[var(--pine)]">(December 2024 – May 2025: Intern | August 2025 – Present: Part-time Software Engineer)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
                 Designing and simulating <strong>quantum circuits</strong> for hardware optimization 
@@ -258,11 +336,11 @@ case "experiences":
           </div>
 
           {/* bHaptics Researcher */}
-          <div className="border-2 border-[#31748f] rounded-lg p-4">
-            <h2 className="text-[#f6c177] font-bold text-lg mb-2">
+          <div className="border-2 border-[var(--pine)] rounded-lg p-4">
+            <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
               Researcher — bHaptics Tactile Communication Project
             </h2>
-            <p className="text-[#31748f]">(August 2023 – March 2024)</p>
+            <p className="text-[var(--pine)]">(August 2023 – March 2024)</p>
             <ul className="list-disc list-inside mt-2">
               <li className="mb-2">
                 Engineered vibrotactile communication patterns using the bHaptics Tact Suit (x40) 
@@ -367,23 +445,23 @@ case "experiences":
             return (
               <div
                 key={index}
-                // className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg mb-6"
-                className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg mb-6 border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300"
+                // className="bg-gradient-to-r from-[var(--surface)] to-[var(--gradient-to)] p-6 rounded-lg mb-6"
+                className="bg-gradient-to-r from-[var(--surface)] to-[var(--gradient-to)] p-6 rounded-lg mb-6 border-b-4 border-b-[var(--gold)] hover:shadow-lg transition-shadow duration-300"
               >
                 {/* Project Name */}
-                <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-2">
+                <h2 className="text-[var(--gold)] lg:text-3xl text-xl font-bold mb-2">
                   {item.projName}
                 </h2>
 
                 {/* Short Description */}
-                <p className="text-[#e0def4] mb-4">{item.shortDesc}</p>
+                <p className="text-[var(--text)] mb-4">{item.shortDesc}</p>
 
                 {/* Technologies Tags */}
                 <div className="mb-4 flex flex-wrap gap-2">
                   {item.techTags.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="bg-[#2e3440] text-[#c4a7e7] px-3 py-1 rounded-lg shadow-md"
+                      className="bg-[var(--overlay)] text-[var(--iris)] px-3 py-1 rounded-lg shadow-md"
                     >
                       {tech}
                     </span>
@@ -398,7 +476,7 @@ case "experiences":
                       href={item.gbLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#f6c177] hover:text-[#9ccfd8] flex items-center"
+                      className="text-[var(--gold)] hover:text-[var(--foam)] flex items-center"
                     >
                       <FaGithub className="mr-2" />
                       GitHub
@@ -410,7 +488,7 @@ case "experiences":
                       href={item.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#f6c177] hover:text-[#9ccfd8] flex items-center"
+                      className="text-[var(--gold)] hover:text-[var(--foam)] flex items-center"
                     >
                       <FaLink className="mr-2" />
                       Live Demo
@@ -497,18 +575,18 @@ case "skills":
           className={
             "mb-4 " +
             (section.heading === "Specialized Domains"
-              ? "bg-[#292639] border border-[#f6c177] p-4 rounded-lg"
+              ? "bg-[var(--surface)] border border-[var(--gold)] p-4 rounded-lg"
               : "")
           }
         >
-          <h2 className="text-lg lg:text-xl md:text-xl mb-2 text-[#f6c177]">
+          <h2 className="text-lg lg:text-xl md:text-xl mb-2 text-[var(--gold)]">
             {section.heading}
           </h2>
           <div className="flex flex-wrap gap-3">
             {section.skills.map((skill) => (
               <span
                 key={skill}
-                className="bg-[#2e3440] text-[#c4a7e7] px-3 py-1 rounded-lg shadow-md"
+                className="bg-[var(--overlay)] text-[var(--iris)] px-3 py-1 rounded-lg shadow-md"
               >
                 {skill}
               </span>
@@ -524,8 +602,8 @@ case "skills":
         <div>
           <p className="mb-2">
             Interested in connecting with me? Feel free to reach out! I'm active
-            on <span className="text-[#f6c177]">Twitter(X)</span> and{" "}
-            <span className="text-[#f6c177]">Email</span>.
+            on <span className="text-[var(--gold)]">Twitter(X)</span> and{" "}
+            <span className="text-[var(--gold)]">Email</span>.
           </p>
           {[
             {
@@ -562,13 +640,13 @@ case "skills":
           ].map((item) => {
             return (
               <div key={item.username} className="flex items-center mb-2">
-                <span className="text-[#f6c177]  mr-2">{item.icon}</span>
-                <span className="text-[#f6c177] w-28">{item.social}</span>
+                <span className="text-[var(--gold)]  mr-2">{item.icon}</span>
+                <span className="text-[var(--gold)] w-28">{item.social}</span>
                 <a
                   href={item.link}
                   rel="noopener noreferrer"
                   target="_blank"
-                  className="text-[#c4a7e7] hover:text-[#9c5de9] hover:underline"
+                  className="text-[var(--iris)] hover:text-[var(--hover)] hover:underline"
                 >
                   {item.username}
                 </a>
@@ -580,78 +658,78 @@ case "skills":
 
 case "achievements":
   return (
-    <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-gradient-to-r from-[var(--surface)] to-[var(--gradient-to)] p-6 rounded-lg border-b-4 border-b-[var(--gold)] hover:shadow-lg transition-shadow duration-300">
       {/* Common Heading */}
-      <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-6">
+      <h2 className="text-[var(--gold)] lg:text-3xl text-xl font-bold mb-6">
         CP Profiles
       </h2>
 
       {/* Content Boxes */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Codeforces Box */}
-        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+        <div className="bg-[var(--surface)] p-6 rounded-lg shadow-lg border-2 border-[var(--gold)] transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <img
               src="/2944796.webp"
               alt="Codeforces Logo"
               className="h-12 w-12 mr-4"
             />
-            <h2 className="text-[#f6c177] text-xl font-bold">Codeforces</h2>
+            <h2 className="text-[var(--gold)] text-xl font-bold">Codeforces</h2>
           </div>
-          <p className="text-[#e0def4] mb-2">
+          <p className="text-[var(--text)] mb-2">
             <strong>Rating:</strong> Expert (1832)
           </p>
           <a
             href="https://codeforces.com/profile/soumen_kr003"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#f6c177] hover:text-[#9ccfd8]"
+            className="text-[var(--gold)] hover:text-[var(--foam)]"
           >
             View Profile
           </a>
         </div>
 
         {/* CodeChef Box */}
-        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+        <div className="bg-[var(--surface)] p-6 rounded-lg shadow-lg border-2 border-[var(--gold)] transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <img
               src="/6179134-middle.png"
               alt="CodeChef Logo"
               className="h-12 w-12 mr-4"
             />
-            <h2 className="text-[#f6c177] text-xl font-bold">CodeChef</h2>
+            <h2 className="text-[var(--gold)] text-xl font-bold">CodeChef</h2>
           </div>
-          <p className="text-[#e0def4] mb-2">
+          <p className="text-[var(--text)] mb-2">
             <strong>Rating:</strong> 1814 (4★)
           </p>
           <a
             href="https://www.codechef.com/users/soumen_1929"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#f6c177] hover:text-[#9ccfd8]"
+            className="text-[var(--gold)] hover:text-[var(--foam)]"
           >
             View Profile
           </a>
         </div>
 
         {/* LeetCode Box */}
-        <div className="bg-[#292639] p-6 rounded-lg shadow-lg border-2 border-[#f6c177] transition-shadow duration-300">
+        <div className="bg-[var(--surface)] p-6 rounded-lg shadow-lg border-2 border-[var(--gold)] transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <img
               src="/leetcode.png"
               alt="LeetCode Logo"
               className="h-12 w-12 mr-4"
             />
-            <h2 className="text-[#f6c177] text-xl font-bold">LeetCode</h2>
+            <h2 className="text-[var(--gold)] text-xl font-bold">LeetCode</h2>
           </div>
-          <p className="text-[#e0def4] mb-2">
+          <p className="text-[var(--text)] mb-2">
             <strong>Problems Solved:</strong> 550+
           </p>
           <a
             href="https://leetcode.com/u/Soumen_Kr/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#f6c177] hover:text-[#9ccfd8]"
+            className="text-[var(--gold)] hover:text-[var(--foam)]"
           >
             View Profile
           </a>
@@ -659,11 +737,11 @@ case "achievements":
       </div>
 
       {/* Remaining Achievements */}
-      <div className="bg-gradient-to-r from-[#292639] to-[#2b5e72] p-6 rounded-lg border-b-4 border-b-[#f6c177] hover:shadow-lg transition-shadow duration-300 mt-6">
-        <h2 className="text-[#f6c177] lg:text-3xl text-xl font-bold mb-4">
+      <div className="bg-gradient-to-r from-[var(--surface)] to-[var(--gradient-to)] p-6 rounded-lg border-b-4 border-b-[var(--gold)] hover:shadow-lg transition-shadow duration-300 mt-6">
+        <h2 className="text-[var(--gold)] lg:text-3xl text-xl font-bold mb-4">
           Other Achievements
         </h2>
-        <ul className="list-disc pl-5 text-[#e0def4]">
+        <ul className="list-disc pl-5 text-[var(--text)]">
           <li>Department Rank 3 in B.Tech CS+EE</li>
           <li>3rd Prize (Project Demonstration) in Industry Day-2024 @ IITJ</li>
           <li>Part of IITJ Team in ISRO-URC 24</li>
@@ -677,7 +755,7 @@ case "achievements":
         return (
           <>
             <div className="">
-              <p className="text-[#c4a7e7] col-span-2">All available commands:</p>
+              <p className="text-[var(--iris)] col-span-2">All available commands:</p>
               {[
                 { comm: "about", desc: "- Learn more about me" },
                 {
@@ -714,6 +792,10 @@ case "achievements":
                   desc: "- A collection of my thoughts and occasional rants",
                 },
                 {
+                  comm: "theme",
+                  desc: "- Switch color theme (try 'theme dracula')",
+                },
+                {
                   comm: "clear",
                   desc: "- Clear the Terminal",
                 },
@@ -724,10 +806,10 @@ case "achievements":
               ].map((item) => {
                 return (
                   <div key={item.comm} className="flex items-center">
-                    <span className="text-[#f6c177] lg:w-36 min-w-24 md:w-36">
+                    <span className="text-[var(--gold)] lg:w-36 min-w-24 md:w-36">
                       {item.comm}
                     </span>
-                    <span className="text-[#31748f]">{item.desc}</span>
+                    <span className="text-[var(--pine)]">{item.desc}</span>
                   </div>
                 );
               })}
@@ -805,9 +887,9 @@ case "achievements":
     default:
       return (
         <div>
-          <p className="text-[#eb6f92]">Command not found</p>
+          <p className="text-[var(--love)]">Command not found</p>
           <p>
-            Try <span className="text-[#f6c177]">help</span> to see available
+            Try <span className="text-[var(--gold)]">help</span> to see available
             commands
           </p>
         </div>

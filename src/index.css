@@ -2,30 +2,240 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Scrollbar for Webkit Brows    ers (Chrome, Safari) */
+/* =========================================================================
+   Theme palettes — semantic CSS variables.
+   Switch at runtime via the `theme` command (sets data-theme on <html>).
+   The default (:root) is Rosé Pine, matching the original design exactly.
+   ========================================================================= */
+:root,
+[data-theme="rose-pine"] {
+  --bg: #191724;
+  --text: #e0def4;
+  --gold: #f6c177;
+  --iris: #c4a7e7;
+  --pine: #31748f;
+  --foam: #9ccfd8;
+  --rose: #ebbcba;
+  --love: #eb6f92;
+  --surface: #292639;
+  --overlay: #2e3440;
+  --gradient-to: #2b5e72;
+  --prompt-a: #ffbebb;
+  --prompt-b: #f7bfbd;
+  --hover: #9c5de9;
+  --btn-close: #f7768e;
+  --btn-min: #e0af68;
+  --btn-max: #9ece6a;
+  --scroll-thumb: #4a4a4a;
+  --scroll-track: #1f1f1f;
+}
+
+[data-theme="rose-pine-dawn"] {
+  --bg: #faf4ed;
+  --text: #575279;
+  --gold: #ea9d34;
+  --iris: #907aa9;
+  --pine: #286983;
+  --foam: #56949f;
+  --rose: #d7827e;
+  --love: #b4637a;
+  --surface: #fffaf3;
+  --overlay: #f2e9e1;
+  --gradient-to: #dfdad9;
+  --prompt-a: #d7827e;
+  --prompt-b: #b4637a;
+  --hover: #907aa9;
+  --btn-close: #b4637a;
+  --btn-min: #ea9d34;
+  --btn-max: #56949f;
+  --scroll-thumb: #cecacd;
+  --scroll-track: #faf4ed;
+}
+
+[data-theme="dracula"] {
+  --bg: #282a36;
+  --text: #f8f8f2;
+  --gold: #ffb86c;
+  --iris: #bd93f9;
+  --pine: #8be9fd;
+  --foam: #50fa7b;
+  --rose: #ff79c6;
+  --love: #ff5555;
+  --surface: #44475a;
+  --overlay: #343746;
+  --gradient-to: #6272a4;
+  --prompt-a: #ff79c6;
+  --prompt-b: #ff92df;
+  --hover: #bd93f9;
+  --btn-close: #ff5555;
+  --btn-min: #f1fa8c;
+  --btn-max: #50fa7b;
+  --scroll-thumb: #6272a4;
+  --scroll-track: #282a36;
+}
+
+[data-theme="gruvbox"] {
+  --bg: #282828;
+  --text: #ebdbb2;
+  --gold: #fabd2f;
+  --iris: #d3869b;
+  --pine: #83a598;
+  --foam: #8ec07c;
+  --rose: #fe8019;
+  --love: #fb4934;
+  --surface: #3c3836;
+  --overlay: #504945;
+  --gradient-to: #458588;
+  --prompt-a: #fe8019;
+  --prompt-b: #fabd2f;
+  --hover: #b8bb26;
+  --btn-close: #fb4934;
+  --btn-min: #fabd2f;
+  --btn-max: #b8bb26;
+  --scroll-thumb: #504945;
+  --scroll-track: #1d2021;
+}
+
+[data-theme="nord"] {
+  --bg: #2e3440;
+  --text: #eceff4;
+  --gold: #ebcb8b;
+  --iris: #b48ead;
+  --pine: #81a1c1;
+  --foam: #88c0d0;
+  --rose: #d08770;
+  --love: #bf616a;
+  --surface: #3b4252;
+  --overlay: #434c5e;
+  --gradient-to: #5e81ac;
+  --prompt-a: #d08770;
+  --prompt-b: #ebcb8b;
+  --hover: #8fbcbb;
+  --btn-close: #bf616a;
+  --btn-min: #ebcb8b;
+  --btn-max: #a3be8c;
+  --scroll-thumb: #4c566a;
+  --scroll-track: #2e3440;
+}
+
+[data-theme="matrix"] {
+  --bg: #0b0f0a;
+  --text: #9be89b;
+  --gold: #00ff41;
+  --iris: #39ff14;
+  --pine: #4caf50;
+  --foam: #a8ff60;
+  --rose: #00ff41;
+  --love: #ff5555;
+  --surface: #0f1a0f;
+  --overlay: #142414;
+  --gradient-to: #103810;
+  --prompt-a: #00ff41;
+  --prompt-b: #39ff14;
+  --hover: #a8ff60;
+  --btn-close: #ff5555;
+  --btn-min: #ffcc00;
+  --btn-max: #00ff41;
+  --scroll-thumb: #1f3a1f;
+  --scroll-track: #0b0f0a;
+}
+
+/* ===== Custom scrollbar (Webkit) ===== */
 ::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
-  height: 8px; /* Height for horizontal scrollbar (optional) */
+  width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: #4a4a4a; /* Thumb color */
-  border-radius: 8px; /* Optional rounded corners */
+  background-color: var(--scroll-thumb);
+  border-radius: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background-color: #1f1f1f; /* Track color */
-  border-radius: 8px; /* Optional rounded corners */
+  background-color: var(--scroll-track);
+  border-radius: 8px;
 }
-
-/* For Firefox */
+/* Firefox */
 .scrollable-area {
-  scrollbar-width: thin; /* Thin scrollbar */
-  scrollbar-color: #4a4a4a #1f1f1f; /* Thumb and Track color */
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+  body {
+    background-color: var(--bg);
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.cursor-blink {
+  animation: blink 1.05s step-end infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-cmd {
+  animation: fade-in-up 0.25s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fade {
+  animation: fade-in 0.4s ease-out both;
+}
+
+/* ===== Subtle CRT scanlines + vignette overlay ===== */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+.crt-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14) 0px,
+    rgba(0, 0, 0, 0.14) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.45;
+}
+.crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
 }
