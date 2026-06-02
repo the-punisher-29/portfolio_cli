@@ -215,6 +215,8 @@ const skillSections = [
       "Arduino IDE",
       "Unity",
       "Simulink",
+      "Xilinx Vivado",
+      "Keil µVision",
     ],
   },
   {
@@ -224,6 +226,7 @@ const skillSections = [
       "Git",
       "SpringBoot",
       "Google Cloud",
+      "Azure",
       "Vercel",
       "React.js",
       "Node.js",
@@ -241,8 +244,7 @@ const skillSections = [
     skills: [
       "Security & Cryptography",
       "Generative AI",
-      "Bayesian Statistics",
-      "Quantum Machine Learning",
+      "Quantum Computing",
       "Embedded Systems",
       "Android App Development",
     ],
@@ -286,7 +288,7 @@ const cpProfiles = [
   {
     name: "Codeforces",
     logo: "/2944796.webp",
-    stat: "Expert (1832)",
+    stat: "Expert (1864)",
     statLabel: "Rating:",
     link: "https://codeforces.com/profile/soumen_kr003",
   },
@@ -318,42 +320,35 @@ const ALL_COMMANDS: CommandDef[] = [
           </h1>
           <div>
             <p className="mt-2">
-              Final-year B.Tech student at IIT Jodhpur, pursuing a dual major in{" "}
+              I recently graduated from IIT Jodhpur with a B.Tech in Engineering
+              Science, specializing in{" "}
               <span className="text-[var(--gold)]">Computer Science</span> and{" "}
-              <span className="text-[var(--gold)]">Electrical Engineering</span>. I enjoy
-              working at the intersection of hardware and software — from backend systems
-              and cloud infrastructure to machine learning models and embedded devices.
+              <span className="text-[var(--gold)]">Electrical Engineering</span>.
             </p>
             <p className="mt-2">
-              Recently, I completed a{" "}
-              <span className="text-[var(--gold)]">Data Science internship at Naukri.com</span>,
-              where I worked on recommendation systems and real-time analytics pipelines.
-              My interests currently span{" "}
-              <span className="text-[var(--gold)]">security & cryptography</span> (secure
-              computation, zero-knowledge proofs, post-quantum cryptography),{" "}
-              <span className="text-[var(--gold)]">Generative AI</span>, mathematics,
-              algorithms, and statistics.
+              Most of my work sits between software and systems: backend
+              engineering, cloud infrastructure, machine learning, embedded
+              systems, cryptography, and{" "}
+              <span className="text-[var(--gold)]">quantum computing</span>. I like
+              problems that need real theory and code that actually ships.
             </p>
             <p className="mt-2">
-              On the development side, I’m exploring{" "}
-              <span className="text-[var(--gold)]">SpringBoot</span> for backend engineering
-              and leveraging <span className="text-[var(--gold)]">cloud platforms</span> for
-              scalable applications. For my B.Tech project, I’m researching nanosensors
-              and embedded systems integrated with machine learning for healthtech
-              applications, focusing on intelligent data collection and analysis for
-              better diagnostics.
+              The things I keep coming back to are algorithms, system security,
+              secure and{" "}
+              <span className="text-[var(--gold)]">post-quantum cryptography</span>,{" "}
+              <span className="text-[var(--gold)]">generative AI</span>, and
+              distributed systems. I've worked on these through coursework,
+              internships, and open source, on projects spanning ML, healthcare
+              tech, and quantum software.
             </p>
             <p className="mt-2">
-              When I’m not immersed in code or research, you’ll find me exploring new
-              concepts in mathematics, reading about algorithmic problem-solving, or
-              engaged in sports like badminton and esports — sharpening both my
-              analytical and strategic thinking skills. I believe in building tech that
-              matters and collaborating with people who share the “let’s create something
-              impactful” mindset.
+              Away from the screen, I do competitive programming, mess around with
+              math, and play badminton and esports. I do my best work with people
+              who genuinely like hard problems.
             </p>
             <p className="text-xs mt-2 italic">
-              — Written with a blend of caffeine, curiosity, and way too many side
-              projects
+              — Curious by default, and running more side projects than I probably
+              should.
             </p>
           </div>
         </div>
@@ -396,17 +391,22 @@ const ALL_COMMANDS: CommandDef[] = [
               <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
                 Undergraduate Research Scholar — AyurTech Lab, Electrical Department, IIT Jodhpur
               </h2>
-              <p className="text-[var(--pine)]">(August 2025 – Present)</p>
+              <p className="text-[var(--pine)]">(August 2025 – January 2026)</p>
               <ul className="list-disc list-inside mt-2">
                 <li className="mb-2">
-                  Researching <strong>nanosensors</strong> and
+                  Researched <strong>nanosensors</strong> and
                   <strong> embedded systems</strong> integrated with
                   <strong> machine learning</strong> for healthtech applications,
-                  focusing on intelligent sensing and diagnostics.
+                  with a focus on intelligent sensing and diagnostics.
+                </li>
+                <li className="mb-2">
+                  Designed and tested sensor-data acquisition pipelines and predictive
+                  ML models aimed at early-stage health condition detection.
                 </li>
                 <li>
-                  Designing and testing sensor-data acquisition pipelines and predictive
-                  ML models aimed at early-stage health condition detection.
+                  Built an <strong>AIoT</strong> platform that senses and detects
+                  <strong> VOC</strong> gas concentrations (ppm) using an array of
+                  sensors and a calibrated ML model.
                 </li>
               </ul>
             </div>
@@ -434,18 +434,46 @@ const ALL_COMMANDS: CommandDef[] = [
 
             <div className="border-2 border-[var(--pine)] rounded-lg p-4 mb-4">
               <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
-                Quantum Developer — CybraneX
+                SDE Intern — CybraneX
               </h2>
-              <p className="text-[var(--pine)]">(December 2024 – May 2025: Intern | August 2025 – Present: Part-time Software Engineer)</p>
+              <p className="text-[var(--pine)]">(November 2024 – April 2025 · Remote)</p>
               <ul className="list-disc list-inside mt-2">
                 <li className="mb-2">
-                  Designing and simulating <strong>quantum circuits</strong> for hardware optimization
-                  using <strong>Qiskit</strong> within the IBM Quantum environment.
+                  Developed <strong>CUDA-Q</strong> applications and hybrid quantum
+                  workflows for optimization tasks.
+                </li>
+                <li className="mb-2">
+                  Built <strong>AI voice agents</strong> with speech-processing and
+                  automation capabilities.
                 </li>
                 <li>
-                  Developing <strong>Quantum Machine Learning (QML)</strong> workflows with <strong>CUDA-Q</strong>,
-                  improving simulation performance and applying quantum optimization to logistics
-                  and scheduling problems.
+                  Contributed to quantum hardware integration, testing, and
+                  experiment execution.
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-2 border-[var(--pine)] rounded-lg p-4 mb-4">
+              <h2 className="text-[var(--gold)] font-bold text-lg mb-2">
+                Software Engineer (Part-Time) — CybraneX
+              </h2>
+              <p className="text-[var(--pine)]">(August 2025 – May 2026 · Remote)</p>
+              <ul className="list-disc list-inside mt-2">
+                <li className="mb-2">
+                  Developed hybrid <strong>quantum-classical</strong> solutions for
+                  energy grid optimization.
+                </li>
+                <li className="mb-2">
+                  Worked on <strong>MatrixAI</strong>, a low-level numerical
+                  computation engine.
+                </li>
+                <li className="mb-2">
+                  Built full-stack platforms for remote quantum systems
+                  (<strong>NMR</strong>) and startup simulation environments.
+                </li>
+                <li>
+                  Developed scalable <strong>APIs</strong> and real-time data
+                  services for scientific workloads.
                 </li>
               </ul>
             </div>
@@ -704,7 +732,7 @@ const ALL_COMMANDS: CommandDef[] = [
         ["Shell", "portfolio.sh"],
         ["Editor", "VS Code / Neovim"],
         ["Languages", "C/C++, Python, Kotlin, TS"],
-        ["CP", "CF Expert (1832) • CC 4★ • LC 550+"],
+        ["CP", "CF Expert (1864) • CC 4★ • LC 550+"],
         ["Theme", theme],
         ["Uptime", uptime],
       ];
